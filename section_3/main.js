@@ -1,4 +1,4 @@
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('path');
 
 const createWindow = () => { 
@@ -12,7 +12,7 @@ const createWindow = () => {
             // 预加载脚本
             preload: path.resolve(__dirname, 'preload.js'),
             // 使用node的功能,为了安全，默认不开启
-            nodeIntegration: true,
+            // nodeIntegration: true,
         }
     });
     // 打开开发者工具
@@ -38,3 +38,9 @@ app.on('window-all-closed', () => {
         app.quit()
     }
 })
+
+
+ipcMain.on('message', (event, arg) => {
+    console.log('message----收到消息：'+arg);
+    event.reply('reply', '主进程已收到，over!');
+});
