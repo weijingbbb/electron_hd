@@ -15,7 +15,7 @@ const createWindow = () => {
     mainWindow.webContents.openDevTools();
     // 加载模板
     mainWindow.loadFile(path.resolve(__dirname, 'index.html'));
-
+    return mainWindow;
 }
 
 module.exports = {

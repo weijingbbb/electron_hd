@@ -1,6 +1,6 @@
 const { app, Menu, BrowserWindow } = require('electron');
 
-const createMenu = () => {
+const createMenu = (win) => {
 
     const isMac = process.platform === 'darwin';
 
@@ -21,8 +21,16 @@ const createMenu = () => {
         {
             label: '操作',
             submenu: [
+            
+                {
+                    label: '通知渲染进程',
+                    click: () => { 
+                        win.webContents.send('toPreload', 'hellow')
+                    }
+                },
                 {
                     label: '打开窗口',
+                    accelerator: 'CommandOrControl+A',
                     click: () => { 
                         new BrowserWindow({
                             width: 300,

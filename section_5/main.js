@@ -6,8 +6,8 @@ const { createMenu } = require('./menu');
 
 // 应用准备好后创建窗口
 app.whenReady().then(() => {
-    createWindow();
-    createMenu();
+    const win = createWindow();
+    createMenu(win);
 })
 
 //非苹果系统当关闭所有窗口时退出应用

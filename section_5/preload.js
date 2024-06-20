@@ -1,0 +1,9 @@
+const { contextBridge, ipcRenderer } = require("electron");
+
+contextBridge.exposeInMainWorld('api', {
+    toPreload: (callback) => { 
+        ipcRenderer.on('toPreload', (_, value) => { 
+            callback(value)
+        })
+    }
+})
