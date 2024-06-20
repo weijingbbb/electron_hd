@@ -23,3 +23,11 @@ window.addEventListener('DOMContentLoaded', () => {
         })
     });
 })
+
+window.addEventListener('DOMContentLoaded', () => { 
+    const btn = document.querySelector('#setTitle');
+    btn.addEventListener('click', () => { 
+        const title = document.querySelector('input').value;
+        window.api.changeTitle(title);
+    });
+})

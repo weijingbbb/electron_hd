@@ -26,6 +26,9 @@ contextBridge.exposeInMainWorld('api', {
         const file = await ipcRenderer.invoke('uploadFile');
         console.log(file);
         callback(file);
+    },
+    changeTitle: (newTitle) => { 
+        ipcRenderer.send('updateTitle',newTitle)
     }
 })
 

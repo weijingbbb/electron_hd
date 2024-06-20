@@ -54,4 +54,10 @@ ipcMain.handle('uploadFile', async (event, arg) => {
         
     });
     return filePaths;
- });
+});
+ 
+ipcMain.on('updateTitle', (event, title) => { 
+    // document.title = title
+    console.log(title);
+    BrowserWindow.fromWebContents(event.sender).title = title
+})
