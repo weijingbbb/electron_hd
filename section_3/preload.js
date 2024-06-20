@@ -25,3 +25,7 @@ window.addEventListener('DOMContentLoaded', () => {
         el.innerHTML = `${app}: ${process.versions[app]}`;
     }
 })
+
+ipcRenderer.on('test', () => {
+    console.log('接收到主进程的test事件');
+})
