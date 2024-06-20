@@ -12,7 +12,8 @@ const createWindow = () => {
             // 预加载脚本
             preload: path.resolve(__dirname, 'preload.js'),
             // 使用node的功能,为了安全，默认不开启
-            // nodeIntegration: true,
+            nodeIntegration: true,
+            // 隔离
             contextIsolation: false,
         }
     });
