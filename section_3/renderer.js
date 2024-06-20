@@ -8,7 +8,7 @@
 console.log(window.api);
 window.addEventListener('DOMContentLoaded', () => { 
     const btn = document.querySelector('#btn');
-    btn.addEventListener('click', window.api.c);
+    btn.addEventListener('click', window.api.hd);
 })
 
 window.api.counter((value) => { 

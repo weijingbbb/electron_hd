@@ -46,4 +46,5 @@ app.on('window-all-closed', () => {
 ipcMain.on('message', (event, arg) => {
     console.log('message----收到消息：'+arg);
     event.reply('reply', '主进程已收到，over!');
+    BrowserWindow.fromWebContents(event.sender).webContents.send('msg', '我（主进程）已收到，over');
 });

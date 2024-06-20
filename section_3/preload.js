@@ -32,3 +32,10 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 })
 
+ipcRenderer.on('msg', (_event, message) => {
+    console.log(message);
+});
+ 
+ipcRenderer.on('reply', (_event, message) => {
+    console.log('reply:'+message);
+ });
