@@ -2,6 +2,7 @@
 const { app, ipcMain, BrowserWindow, screen } = require('electron');
 const { createWindow } = require('./window');
 const { createMenu } = require('./menu');
+require('./contextMenu');
 
 
 // 应用准备好后创建窗口

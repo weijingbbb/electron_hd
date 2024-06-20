@@ -5,5 +5,8 @@ contextBridge.exposeInMainWorld('api', {
         ipcRenderer.on('toPreload', (_, value) => { 
             callback(value)
         })
+    },
+    showMainPopMenu: () => { 
+        ipcRenderer.send('mainPopMenu');
     }
 })
