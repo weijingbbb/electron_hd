@@ -17,5 +17,9 @@ window.api.counter((value) => {
 
 window.addEventListener('DOMContentLoaded', () => { 
     const btn = document.querySelector('#upload');
-    btn.addEventListener('click', window.api.upload);
+    btn.addEventListener('click', () => { 
+        window.api.upload((file) => { 
+            console.log('渲染进程接收到文件啦：'+file);
+        })
+    });
 })

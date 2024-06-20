@@ -22,9 +22,10 @@ contextBridge.exposeInMainWorld('api', {
             callback(value);
         })
     },
-    upload: async () => { 
+    upload: async (callback) => { 
         const file = await ipcRenderer.invoke('uploadFile');
         console.log(file);
+        callback(file);
     }
 })
 
