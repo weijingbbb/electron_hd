@@ -1,5 +1,5 @@
 
-const { app, ipcMain, BrowserWindow } = require('electron');
+const { app, ipcMain, BrowserWindow, screen } = require('electron');
 const { createWindow } = require('./window');
 
 
@@ -25,4 +25,16 @@ app.on('window-all-closed', () => {
 
 ipcMain.on('mainEvent', () => { 
     console.log('mainEvent： 主进程接收到消息');
+})
+ipcMain.on('setPosition', (event, options) => {
+    console.log('setPosition', options);
+
+    const { width } = screen.getPrimaryDisplay().workAreaSize
+    const x = width / 2 - options.width / 2;
+    // 获取窗口
+    BrowserWindow.fromWebContents(event.sender).setBounds({
+        ...options,
+        x,
+        y: 100
+    }, true)
 })
