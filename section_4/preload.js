@@ -7,7 +7,7 @@ const { contextBridge, ipcRenderer, shell } = require("electron");
 
 // })
 
-shell.openExternal('http://www.baidu.com')
+// shell.openExternal('http://www.baidu.com')
 
 window.api = {
     toMain: () => { 
