@@ -1,5 +1,6 @@
 const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('path');
+const { createMenu } = require('./menu');
 
 const createWindow = () => { 
     // 定义窗口
@@ -19,6 +20,8 @@ const createWindow = () => {
     mainWindow.webContents.openDevTools();
     // 加载模板
     mainWindow.loadFile(path.resolve(__dirname, 'index.html'));
+
+    createMenu(mainWindow);
 }
 
 // 应用准备好后创建窗口

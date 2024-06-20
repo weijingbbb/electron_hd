@@ -17,3 +17,11 @@ contextBridge.exposeInMainWorld('api', {
         ipcRenderer.send('message', '主进程，主进程，听到吗，我是hd方法的message')
     }
 })
+
+window.addEventListener('DOMContentLoaded', () => { 
+   
+    for(const app of ['node', 'chrome', 'electron']) {
+        const el = document.querySelector(`#${app}`);
+        el.innerHTML = `${app}: ${process.versions[app]}`;
+    }
+})
