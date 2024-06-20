@@ -14,3 +14,8 @@ window.addEventListener('DOMContentLoaded', () => {
 window.api.counter((value) => { 
     console.log('counter:'+ value);
 })
+
+window.addEventListener('DOMContentLoaded', () => { 
+    const btn = document.querySelector('#upload');
+    btn.addEventListener('click', window.api.upload);
+})

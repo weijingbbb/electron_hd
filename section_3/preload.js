@@ -21,6 +21,10 @@ contextBridge.exposeInMainWorld('api', {
             // console.log('接收到主进程的test事件', value);
             callback(value);
         })
+    },
+    upload: async () => { 
+        const file = await ipcRenderer.invoke('uploadFile');
+        console.log(file);
     }
 })
 

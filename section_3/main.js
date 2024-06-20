@@ -1,4 +1,4 @@
-const { app, BrowserWindow, ipcMain } = require('electron');
+const { app, BrowserWindow, ipcMain, dialog } = require('electron');
 const path = require('path');
 const { createMenu } = require('./menu');
 
@@ -48,3 +48,10 @@ ipcMain.on('message', (event, arg) => {
     event.reply('reply', '主进程已收到，over!');
     BrowserWindow.fromWebContents(event.sender).webContents.send('msg', '我（主进程）已收到，over');
 });
+
+ipcMain.handle('uploadFile', async (event, arg) => {
+    const { filePaths } = await dialog.showOpenDialog({
+        
+    });
+    return filePaths;
+ });
