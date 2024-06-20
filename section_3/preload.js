@@ -15,6 +15,12 @@ contextBridge.exposeInMainWorld('api', {
     a: 333,
     hd: () => { 
         ipcRenderer.send('message', '主进程，主进程，听到吗，我是hd方法的message')
+    },
+    counter: (callback) => { 
+        ipcRenderer.on('test', (_event, value) => {
+            // console.log('接收到主进程的test事件', value);
+            callback(value);
+        })
     }
 })
 
@@ -26,6 +32,3 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 })
 
-ipcRenderer.on('test', () => {
-    console.log('接收到主进程的test事件');
-})

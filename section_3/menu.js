@@ -10,7 +10,7 @@ const createMenu = (win) => {
                     click: () => { 
                         console.log('点击了增加');
                         console.log(win.webContents);
-                        win.webContents.send('test');
+                        win.webContents.send('test', 111);
                     }
                 }
     

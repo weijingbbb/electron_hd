@@ -5,8 +5,12 @@
 // })
 
 // console.log(window);
-console.log(window.api.a);
+console.log(window.api);
 window.addEventListener('DOMContentLoaded', () => { 
     const btn = document.querySelector('#btn');
-    btn.addEventListener('click', window.api.hd);
+    btn.addEventListener('click', window.api.c);
+})
+
+window.api.counter((value) => { 
+    console.log('counter:'+ value);
 })
