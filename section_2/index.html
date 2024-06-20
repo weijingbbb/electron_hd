@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <!-- 内容安全策略，防止跨站脚本攻击和数据注入， 只允许站内资源和xxx网站的资源 -->
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'" /> -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' *.trusted.com; script-src '*.houdunren.com'" />
+  </head>
+  <body>
+    <h1>houdunren.com</h1>
+    <script src="renderer.js"></script>
+  </body>
+</html>
