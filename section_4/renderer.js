@@ -1,8 +1,8 @@
-const fs = require('fs')
+// const fs = require('fs')
 
-fs.writeFileSync('b.txt', 'ccc')
+// fs.writeFileSync('b.txt', 'ccc')
 
 
-window.addEventListener('DOMContentLoaded', () => {
-    window.api.toMain();
-})
+// window.addEventListener('DOMContentLoaded', () => {
+//     window.api.toMain();
+// })

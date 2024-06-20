@@ -12,9 +12,12 @@ const createWindow = () => {
             // 预加载脚本
             preload: path.resolve(__dirname, 'preload.js'),
             // 使用node的功能,为了安全，默认不开启
-            nodeIntegration: true,
+            // nodeIntegration: true,
             // 隔离
-            contextIsolation: false,
+            // contextIsolation: false,
+            // 沙盒模式，关闭了，预加载脚本可以使用node的部分模块，渲染脚本不能使用，
+            // 当nodeIntegration = true,则表示sandbox=false
+            sandbox: false
         }
     });
     // 打开开发者工具
