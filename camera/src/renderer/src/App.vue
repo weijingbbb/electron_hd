@@ -7,11 +7,10 @@ import Setting from './components/Setting.vue';
 
 
 
+useDrag()
 const { config } = useConfigStore()
-const { drag } = useDrag()
 
 const quit = () => {
-  console.log('bbbbb');
   window.api.quit();
 }
 

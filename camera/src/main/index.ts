@@ -4,6 +4,7 @@ import { join } from 'path'
 import icon from '../../resources/icon.png?asset'
 import './drag'
 import './ipcMain'
+import createTray from './tray'
 
 function createWindow(): void {
   // Create the browser window.
@@ -29,6 +30,9 @@ function createWindow(): void {
       sandbox: false
     }
   })
+
+  // 系统托盘
+  createTray()
 
   // 开发环境打开开发者工具
   if(is.dev)mainWindow.webContents.openDevTools();
