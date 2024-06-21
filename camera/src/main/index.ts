@@ -9,10 +9,10 @@ import createTray from './tray'
 function createWindow(): void {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
-    width: 300,
-    height: 300,
-    minWidth: 250,
-    minHeight: 250,
+    width: 250,
+    height: 250,
+    minWidth: 200,
+    minHeight: 200,
     maxWidth: 500,
     maxHeight: 500,
     show: false,
