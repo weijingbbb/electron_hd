@@ -11,5 +11,5 @@ ipcMain.handle('selectFileMain', async (event) => {
             }
         ]
     })
-    console.log( res);
+    return res
 })

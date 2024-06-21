@@ -7,8 +7,13 @@ window.addEventListener('DOMContentLoaded', () => {
     })
     const selectBtn = document.querySelector('#selectBtn');
     selectBtn.addEventListener('click', async () => { 
+        const container = document.querySelector('#container');
         const result = await window.api.selectFilePreload();
-        console.log(result);
+        for (const file of result.filePaths) {
+            const p = document.createElement('p');
+            p.innerText = file;
+            container.appendChild(p);
+        }
     })
 })
 
