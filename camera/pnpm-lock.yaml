@@ -6,6 +6,7 @@ specifiers:
   '@electron-toolkit/preload': ^3.0.0
   '@electron-toolkit/tsconfig': ^1.0.1
   '@electron-toolkit/utils': ^3.0.0
+  '@icon-park/vue-next': ^1.4.2
   '@rushstack/eslint-patch': ^1.7.1
   '@types/node': ^18.19.9
   '@vitejs/plugin-vue': ^5.0.3
@@ -44,6 +45,7 @@ devDependencies:
   '@electron-toolkit/eslint-config': 1.0.2_eslint@8.57.0
   '@electron-toolkit/eslint-config-ts': 1.0.1_7fy76lh3a7kmslas56j4kvawoa
   '@electron-toolkit/tsconfig': 1.0.1_@types+node@18.19.38
+  '@icon-park/vue-next': 1.4.2_vue@3.4.29
   '@rushstack/eslint-patch': 1.10.3
   '@types/node': 18.19.38
   '@vitejs/plugin-vue': 5.0.5_vite@5.3.1+vue@3.4.29
@@ -914,6 +916,15 @@ packages:
   /@humanwhocodes/object-schema/2.0.3:
     resolution: {integrity: sha512-93zYdMES/c1D69yZiKDBj0V24vqNzB/koF26KPaagAfd3P/4gUlh3Dys5ogAK+Exi9QyzlD8x/08Zt7wIKcDcA==}
     deprecated: Use @eslint/object-schema instead
+    dev: true
+
+  /@icon-park/vue-next/1.4.2_vue@3.4.29:
+    resolution: {integrity: sha512-+QklF255wkfBOabY+xw6FAI0Bwln/RhdwCunNy/9sKdKuChtaU67QZqU67KGAvZUTeeBgsL+yaHHxqfQeGZXEQ==}
+    engines: {node: '>= 8.0.0', npm: '>= 5.0.0'}
+    peerDependencies:
+      vue: 3.x
+    dependencies:
+      vue: 3.4.29_typescript@5.5.2
     dev: true
 
   /@isaacs/cliui/8.0.2:
