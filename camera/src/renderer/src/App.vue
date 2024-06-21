@@ -6,11 +6,16 @@ import Setting from './components/Setting.vue';
 
 const { config } = useConfigStore()
 
+const quit = () => {
+  console.log('bbbbb');
+  window.api.quit();
+}
+
 </script>
 
 <template>
   <Suspense>
-    <main class="relative group">
+    <main class="relative group" @contextmenu="quit">
       <section>
         <Config
           v-if="config.page == 'camera'"
