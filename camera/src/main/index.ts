@@ -5,16 +5,17 @@ import icon from '../../resources/icon.png?asset'
 import './drag'
 import './ipcMain'
 import createTray from './tray'
+import './windowSize'
 
 function createWindow(): void {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
-    width: 250,
-    height: 250,
-    minWidth: 200,
-    minHeight: 200,
-    maxWidth: 500,
-    maxHeight: 500,
+    width: 500,
+    height: 280,
+    // minWidth: 200,
+    // minHeight: 200,
+    // maxWidth: 500,
+    // maxHeight: 500,
     show: false,
     x: 1900,
     y: 0,

@@ -9,8 +9,12 @@
         :value="item.deviceId"
       />
     </el-select>
-    <el-input v-model="config.borderWidth" placeholder="边框宽度"  clearable class="mb-5"></el-input>
-    <el-input v-model="config.borderColor" placeholder="边框颜色"  clearable class="mb-5"></el-input>
+    <el-input v-model="config.borderWidth" placeholder="边框宽度" clearable class="mb-5"></el-input>
+    <el-input v-model="config.borderColor" placeholder="边框颜色" class="mb-5 color">
+      <template #append>
+        <el-color-picker v-model="config.borderColor" show-alpha />
+      </template>
+    </el-input>
   </main>
 </template>
 <script setup lang="ts">
@@ -23,3 +27,11 @@ const { config } = useConfigStore()
 
 onMounted(() => {})
 </script>
+
+<style lang="scss" scoped>
+.color {
+  :deep(.el-input-group__append) {
+    padding: 0;
+  }
+}
+</style>
