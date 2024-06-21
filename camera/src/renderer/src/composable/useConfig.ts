@@ -4,6 +4,8 @@ import { ref } from 'vue'
 type ConfigType = {
   deviceId: string
   page: 'camers' | 'setting'
+  borderWidth: number
+  borderColor: string
 }
 
 // 你可以任意命名 `defineStore()` 的返回值，但最好使用 store 的名字，同时以 `use` 开头且以 `Store` 结尾。
@@ -14,7 +16,9 @@ export const useConfigStore = defineStore(
   () => {
     const config = ref<ConfigType>({
       deviceId: '',
-      page: 'camers'
+      page: 'camers',
+      borderWidth: 0,
+      borderColor: ''
     })
     const updateConfig = (deviceId: string = '', page: 'camers' | 'setting' = 'camers') => {
       if (deviceId) config.value.deviceId = deviceId
