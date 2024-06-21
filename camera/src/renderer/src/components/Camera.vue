@@ -1,6 +1,7 @@
 <template>
   <main
-    class="flex w-screen h-screen"
+    class="w-screen h-screen overflow-hidden "
+    :class="{ 'rounded-full': config.rounded }"
     :style="`border: solid ${config.borderWidth}px ${config.borderColor};`"
   >
     <video src="" class="object-cover h-full"></video>

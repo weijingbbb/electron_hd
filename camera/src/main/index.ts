@@ -17,6 +17,8 @@ function createWindow(): void {
     y: 0,
     alwaysOnTop: true,
     autoHideMenuBar: true,
+    // 窗口背景透明
+    transparent: true,
     // 取消显示标题栏
     frame: false,
     ...(process.platform === 'linux' ? { icon } : {}),

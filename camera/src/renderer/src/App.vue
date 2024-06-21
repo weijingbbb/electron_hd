@@ -1,44 +1,44 @@
 <script setup lang="ts">
-import { Config, GraphicDesign } from '@icon-park/vue-next';
-import { ref } from 'vue';
+import { Config, GraphicDesign, Return } from '@icon-park/vue-next';
+import { useConfigStore } from '@renderer/composable/useConfig';
 import Camera from './components/Camera.vue';
 import Setting from './components/Setting.vue';
 
-const page = ref('camera')
+const { config } = useConfigStore()
 
-const changePae = () => {
-  console.log('bbbb')
-  if (page.value === 'camera') {
-    page.value = 'setting'
-  } else {
-    page.value = 'camera'
-  }
-}
 </script>
 
 <template>
   <Suspense>
-    <main class="relative">
+    <main class="relative group">
       <section>
         <Config
-          v-if="page === 'camera'"
+          v-if="config.page == 'camera'"
           theme="outline"
           size="24"
           fill="#fff"
-          class="absolute z-10 -translate-x-1/2 cursor-pointer left-1/2"
-          @click="changePae"
+          class="absolute z-10 hidden -translate-x-1/2 cursor-pointer top-5 left-1/2 group-hover:block"
+          @click="config.page = 'setting'"
         />
         <graphic-design
-          v-if="page === 'setting'"
+          v-if="config.page == 'camera'"
           theme="outline"
           size="24"
           fill="#fff"
-          class="absolute bottom-0 z-10 -translate-x-1/2 cursor-pointer left-1/2"
-          @click="changePae"
+          class="absolute z-10 hidden -translate-x-1/2 cursor-pointer bottom-5 left-1/2 group-hover:block"
+          @click="config.rounded = !config.rounded"
+        />
+        <return
+          v-if="config.page == 'setting'"
+          theme="outline"
+          size="24"
+          fill="#fff"
+          class="absolute z-10 -translate-x-1/2 cursor-pointer bottom-5 left-1/2"
+          @click="config.page = 'camera'"
         />
       </section>
       <section>
-        <Camera v-if="page === 'camera'"></Camera>
+        <Camera v-if="config.page == 'camera'"></Camera>
         <Setting v-else></Setting>
       </section>
     </main>
