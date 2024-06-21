@@ -1,4 +1,4 @@
-const { app, BrowserWindow, ipcMain, dialog, screen } = require('electron');
+const { app, BrowserWindow, ipcMain, dialog, screen, shell } = require('electron');
 const path = require('path');
 
 const createWindow = () => { 
@@ -15,6 +15,14 @@ const createWindow = () => {
     mainWindow.webContents.openDevTools();
     // 加载模板
     mainWindow.loadFile(path.resolve(__dirname, 'index.html'));
+
+    // 监听到打开新窗口，
+    mainWindow.webContents.setWindowOpenHandler((details) => { 
+        shell.openExternal(details.url)
+        return {
+            action: 'deny'
+        }
+    })
     return mainWindow;
 }
 
