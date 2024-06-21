@@ -1,10 +1,14 @@
 <script setup lang="ts">
 import { Config, GraphicDesign, Return } from '@icon-park/vue-next';
 import { useConfigStore } from '@renderer/composable/useConfig';
+import useDrag from '@renderer/composable/useDrag';
 import Camera from './components/Camera.vue';
 import Setting from './components/Setting.vue';
 
+
+
 const { config } = useConfigStore()
+const { drag } = useDrag()
 
 const quit = () => {
   console.log('bbbbb');

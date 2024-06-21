@@ -29,7 +29,8 @@ function createWindow(): void {
     }
   })
 
-  mainWindow.webContents.openDevTools();
+  // 开发环境打开开发者工具
+  if(is.dev)mainWindow.webContents.openDevTools();
 
   mainWindow.on('ready-to-show', () => {
     mainWindow.show()

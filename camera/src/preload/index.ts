@@ -6,6 +6,9 @@ const api = {
   quit: () => {
     console.log('preload')
     ipcRenderer.send('quit')
+  },
+  drag: (opt: { x: number, y: number }) => {
+    ipcRenderer.send('drag', opt)
   }
 }
 
