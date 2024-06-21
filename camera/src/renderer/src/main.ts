@@ -1,4 +1,5 @@
 
+import './assets/css/global.scss'
 import './assets/css/tailwind.css'
 import './assets/main.css'
 
