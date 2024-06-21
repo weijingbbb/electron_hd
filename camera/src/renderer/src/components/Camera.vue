@@ -7,14 +7,14 @@
 <script setup lang="ts">
 import { onMounted } from 'vue';
 
-// const devices = await navigator.mediaDevices.enumerateDevices()
-// console.log(devices)
 onMounted(() => {
   const video = document.querySelector('video')!
   const constraints = {
     audio: false,
-    video: true
-  }
+    video: {
+      deviceId: 'b3cfdff36643a156c8518e57e368d8c794e83b2df1fc4620f81f6f0807b0c209'
+    }
+  } as MediaStreamConstraints
 
   navigator.mediaDevices.getUserMedia(constraints).then((stream) => {
     video.srcObject = stream
