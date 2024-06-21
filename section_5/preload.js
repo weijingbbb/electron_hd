@@ -10,6 +10,9 @@ contextBridge.exposeInMainWorld('api', {
         ipcRenderer.send('mainPopMenu');
     },
     selectFilePreload:  () => { 
-        return  ipcRenderer.invoke('selectFileMain')
+        return ipcRenderer.invoke('selectFileMain')
+    },
+    saveFile: (txtVal) => { 
+         ipcRenderer.send('saveFileMain', txtVal)
     }
 })

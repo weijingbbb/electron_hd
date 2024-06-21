@@ -15,6 +15,13 @@ window.addEventListener('DOMContentLoaded', () => {
             container.appendChild(p);
         }
     })
+
+    const saveBtn = document.querySelector('#saveBtn');
+    saveBtn.addEventListener('click', () => {
+        const txt = document.querySelector('#txt').value;
+        window.api.saveFile(txt);
+     })
+
 })
 
 window.addEventListener('contextmenu', () => {
