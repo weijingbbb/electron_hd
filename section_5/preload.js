@@ -8,5 +8,8 @@ contextBridge.exposeInMainWorld('api', {
     },
     showMainPopMenu: () => { 
         ipcRenderer.send('mainPopMenu');
+    },
+    selectFilePreload: () => { 
+        return ipcRenderer.invoke('selectFileMain')
     }
 })
