@@ -24,6 +24,8 @@ function createWindow(): void {
     transparent: true,
     // 取消显示标题栏
     frame: false,
+    // windows的程序坞不显示图标
+    skipTaskbar: false,
     ...(process.platform === 'linux' ? { icon } : {}),
     webPreferences: {
       preload: join(__dirname, '../preload/index.js'),
@@ -33,6 +35,8 @@ function createWindow(): void {
 
   // 系统托盘
   createTray()
+  // 苹果的程序坞不显示图标
+  app.dock.hide()
 
   // 开发环境打开开发者工具
   if(is.dev)mainWindow.webContents.openDevTools();
