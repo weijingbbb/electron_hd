@@ -24,7 +24,7 @@ const changePae = () => {
           v-if="page === 'camera'"
           theme="outline"
           size="24"
-          fill="#7ed321"
+          fill="#fff"
           class="absolute z-10 -translate-x-1/2 cursor-pointer left-1/2"
           @click="changePae"
         />
@@ -32,7 +32,7 @@ const changePae = () => {
           v-if="page === 'setting'"
           theme="outline"
           size="24"
-          fill="#7ed321"
+          fill="#fff"
           class="absolute bottom-0 z-10 -translate-x-1/2 cursor-pointer left-1/2"
           @click="changePae"
         />

@@ -26,6 +26,8 @@
     "autoprefixer": "^10.4.19",
     "electron-updater": "^6.1.7",
     "element-plus": "^2.7.5",
+    "pinia": "^2.1.7",
+    "pinia-plugin-persistedstate": "^3.2.1",
     "postcss": "^8.4.38",
     "sass": "^1.77.6",
     "scss": "^0.2.4",

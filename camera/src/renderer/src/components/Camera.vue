@@ -5,14 +5,17 @@
 </template>
 
 <script setup lang="ts">
+import { useConfigStore } from '@renderer/composable/useConfig';
 import { onMounted } from 'vue';
+
+const { config } = useConfigStore()
 
 onMounted(() => {
   const video = document.querySelector('video')!
   const constraints = {
     audio: false,
     video: {
-      deviceId: 'b3cfdff36643a156c8518e57e368d8c794e83b2df1fc4620f81f6f0807b0c209'
+      deviceId: config.deviceId
     }
   } as MediaStreamConstraints
 
