@@ -7,7 +7,7 @@ declare module '*.vue' {
   export default component
 }
 
-
 interface window {
-  api
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  api: any
 }

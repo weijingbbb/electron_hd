@@ -1,10 +1,10 @@
 <template>
   <main
-    class="w-screen h-screen overflow-hidden "
+    class="w-screen h-screen overflow-hidden"
     :class="{ 'rounded-full': config.rounded }"
     :style="`border: solid ${config.borderWidth}px ${config.borderColor};`"
   >
-    <video src="" class="object-cover w-full h-full"></video>
+    <video class="object-cover w-full h-full" :class="{ 'rounded-full': config.rounded }"></video>
   </main>
 </template>
 

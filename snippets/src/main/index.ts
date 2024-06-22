@@ -1,45 +1,21 @@
-import { electronApp, is, optimizer } from '@electron-toolkit/utils'
-import { BrowserWindow, app, ipcMain, shell } from 'electron'
+import { app, shell, BrowserWindow, ipcMain } from 'electron'
 import { join } from 'path'
+import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 import icon from '../../resources/icon.png?asset'
-import './drag'
-import './ipcMain'
-import createTray from './tray'
-import './windowSize'
 
 function createWindow(): void {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
-    width: 500,
-    height: 280,
-    // minWidth: 200,
-    // minHeight: 200,
-    // maxWidth: 500,
-    // maxHeight: 500,
+    width: 900,
+    height: 670,
     show: false,
-    x: 1900,
-    y: 0,
-    alwaysOnTop: true,
     autoHideMenuBar: true,
-    // 窗口背景透明
-    transparent: true,
-    // 取消显示标题栏
-    frame: false,
-    // windows的程序坞不显示图标
-    // skipTaskbar: false,
     ...(process.platform === 'linux' ? { icon } : {}),
     webPreferences: {
       preload: join(__dirname, '../preload/index.js'),
       sandbox: false
     }
   })
-
-  // 苹果的程序坞不显示图标
-  // app.dock.hide()
-
-  // 开发环境打开开发者工具
-  if (is.dev) mainWindow.webContents.openDevTools();
-  // mainWindow.webContents.openDevTools();
 
   mainWindow.on('ready-to-show', () => {
     mainWindow.show()
@@ -77,8 +53,6 @@ app.whenReady().then(() => {
   ipcMain.on('ping', () => console.log('pong'))
 
   createWindow()
-  // 系统托盘
-  createTray()
 
   app.on('activate', function () {
     // On macOS it's common to re-create a window in the app when the
