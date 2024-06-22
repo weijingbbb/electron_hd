@@ -1,3 +1,4 @@
+import '@renderer/assets/tailwind.css'
 import './assets/main.css'
 
 import React from 'react'
