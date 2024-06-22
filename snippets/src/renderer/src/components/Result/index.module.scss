@@ -3,7 +3,7 @@
 }
 .result-item {
   @apply p-1 mb-2 text-sm truncate rounded-sm text-slate-700 bg-slate-200;
-}
-.result-item-active {
-  @apply bg-orange-300 text-white
+  &.active {
+    @apply bg-orange-300 text-white
+  }
 }

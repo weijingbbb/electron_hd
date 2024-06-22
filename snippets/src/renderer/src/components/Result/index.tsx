@@ -1,6 +1,6 @@
 import useCode from '@renderer/hooks/useCode'
 import { useEffect, useState } from 'react'
-import './index.scss'
+import css from './index.module.scss'
 
 export default function Result() {
   const { data } = useCode()
@@ -29,15 +29,14 @@ export default function Result() {
     }
   }, [data])
   return (
-    <main className="result-main">
-      {currentIndex}
+    <main className={css['result-main']}>
       {data.map((item, index) => {
         const { id, content } = item
         console.log(index, currentIndex)
         return (
           <div
             key={id}
-            className={`result-item ${currentIndex == index ? 'result-item-active' : ''} `}
+            className={`${css['result-item']} ${currentIndex == index ? css['active'] : ''} `}
           >
             {content}
           </div>
