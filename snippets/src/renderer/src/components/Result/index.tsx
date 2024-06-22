@@ -4,17 +4,17 @@ import classNames from 'classnames'
 import './index.scss'
 
 export default function Result() {
-  const { data, currentIndex, highlightedIndex } = useCodeSelect()
+  const { data, id, highlightedIndex } = useCodeSelect()
 
   return (
     <main className={classNames('result-main')}>
       {data.map((item, index) => {
-        const { id, content } = item
+        const { id: itemId, content } = item
         return (
           <div
-            key={id}
+            key={itemId}
             className={classNames('result-item', [
-              { active: currentIndex === index },
+              { active: itemId === id },
               { highlighted: highlightedIndex === index }
             ])}
           >
