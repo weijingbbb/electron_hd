@@ -14,12 +14,14 @@ export default () => {
     return data.findIndex((item) => item.id == id)
   }, [data, id])
 
-  const handleDBClick = useCallback((selectItem: DataType, index: number) => {
+  // 优化后的选项列表项，适配键盘Enter、鼠标双击事件
+  const handleSelectItem = useCallback(() => {
     setHighlightedIndex(index)
-    navigator.clipboard.writeText(selectItem.content)
+    const content = data.find((item) => item.id == id)?.content
+    navigator.clipboard.writeText(content!)
     window.api.hideWindow()
-  }, [])
-  const handleMouseUp = useCallback((selectItem: DataType) => {
+  }, [index, id])
+  const handleMouseEnter = useCallback((selectItem: DataType) => {
     setId(selectItem.id)
   }, [])
 
@@ -37,13 +39,7 @@ export default () => {
           setId(data[index + 1]?.id || data[0]?.id)
           break
         case 'Enter':
-          {
-            setHighlightedIndex(index)
-            const content = data.find((item) => item.id == id)?.content
-            // 写入剪贴板
-            if (content) navigator.clipboard.writeText(content)
-            window.api.hideWindow()
-          }
+          handleSelectItem()
           break
       }
     },
@@ -68,8 +64,7 @@ export default () => {
     id,
     highlightedIndex,
     setId,
-    setHighlightedIndex,
-    handleDBClick,
-    handleMouseUp
+    handleSelectItem,
+    handleMouseEnter
   }
 }
