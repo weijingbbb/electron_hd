@@ -6,7 +6,10 @@ import './index.scss'
 
 export default function Result() {
   const { data } = useCode()
+  // 选中的项
   const [currentIndex, setCurrentIndex] = useState(0)
+  // 回车敲的项
+  const [highlightedIndex, setHighlightedIndex] = useState<number | null>(null)
 
   const handleKeyDown = (e: KeyboardEvent) => {
     console.log(currentIndex)
@@ -20,6 +23,7 @@ export default function Result() {
         setCurrentIndex((pre) => (pre + 1 >= data.length ? 0 : pre + 1))
         break
       case 'Enter':
+        setHighlightedIndex(currentIndex)
         // 写入剪贴板
         navigator.clipboard.writeText(data[currentIndex].content)
         break
@@ -41,7 +45,13 @@ export default function Result() {
       {data.map((item, index) => {
         const { id, content } = item
         return (
-          <div key={id} className={classNames('result-item',[ { active: currentIndex === index }])}>
+          <div
+            key={id}
+            className={classNames('result-item', [
+              { active: currentIndex === index },
+              { highlighted: highlightedIndex === index }
+            ])}
+          >
             {content}
           </div>
         )
