@@ -4,7 +4,7 @@ import classNames from 'classnames'
 import './index.scss'
 
 export default function Result() {
-  const { data, id, highlightedIndex } = useCodeSelect()
+  const { data, id, highlightedIndex, handleDBClick, handleMouseUp } = useCodeSelect()
 
   return (
     <main className={classNames('result-main')}>
@@ -17,6 +17,8 @@ export default function Result() {
               { active: itemId === id },
               { highlighted: highlightedIndex === index }
             ])}
+            onDoubleClick={() => handleDBClick(item, index)}
+            onMouseUp={() => handleMouseUp(item )}
           >
             {content}
           </div>
