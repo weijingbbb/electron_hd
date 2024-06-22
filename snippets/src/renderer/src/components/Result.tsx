@@ -1,8 +1,8 @@
-import { DataType, initData } from '@renderer/data'
-import { useState } from 'react'
+import { CodeContext } from '@renderer/context/CodeContext'
+import { useContext } from 'react'
 
 export default function Result() {
-  const [data, setData] = useState<DataType[]>(initData)
+  const { data } = useContext(CodeContext)!
   return (
     <main className="  py-3 bg-slate-50 px-3 rounded-bl-lg rounded-br-lg -mt-[10px]">
       {data.map((item) => {
