@@ -1,8 +1,7 @@
-import { CodeContext } from '@renderer/context/CodeContext'
-import { useContext } from 'react'
+import useCode from '@renderer/hooks/useCode'
 
 export default function Result() {
-  const { data } = useContext(CodeContext)!
+  const { data } = useCode()
   return (
     <main className="  py-3 bg-slate-50 px-3 rounded-bl-lg rounded-br-lg -mt-[10px]">
       {data.map((item) => {
