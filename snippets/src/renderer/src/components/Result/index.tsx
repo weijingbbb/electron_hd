@@ -9,7 +9,7 @@ export default function Result() {
   const [currentIndex, setCurrentIndex] = useState(0)
 
   const handleKeyDown = (e: KeyboardEvent) => {
-    console.log(e.code)
+    console.log(currentIndex)
     // 如果没有数据，则无效退出事件
     if (!data.length) return
     switch (e.code) {
@@ -19,17 +19,23 @@ export default function Result() {
       case 'ArrowDown':
         setCurrentIndex((pre) => (pre + 1 >= data.length ? 0 : pre + 1))
         break
+      case 'Enter':
+        // 写入剪贴板
+        navigator.clipboard.writeText(data[currentIndex].content)
+        break
     }
   }
 
   useEffect(() => {
+    console.log('更新了data')
     // 每次数据更新后，初始化index
-    setCurrentIndex(0)
+    // setCurrentIndex(0)
     document.addEventListener('keydown', handleKeyDown)
     return () => {
       document.removeEventListener('keydown', handleKeyDown)
     }
-  }, [data])
+  }, [data, currentIndex])
+
   return (
     <main className={classNames('result-main')}>
       {data.map((item, index) => {
