@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import useCode from './useCode'
 
 export default () => {
@@ -8,6 +8,10 @@ export default () => {
   const [id, setId] = useState(0)
   // 回车敲的项
   const [highlightedIndex, setHighlightedIndex] = useState<number | null>(null)
+  const index = useMemo(() => {
+    if (!data.length) return -1
+    return data.findIndex((item) => item.id == id)
+  }, [data, id])
 
   const handleKeyDown = useCallback(
     (e: KeyboardEvent) => {
@@ -15,22 +19,17 @@ export default () => {
       if (!data.length) return
       switch (e.code) {
         case 'ArrowUp':
-          setId((id) => {
-            const index = data.findIndex((item) => item.id == id)
-            return data[index - 1]?.id || data[data.length - 1]?.id
-          })
+
+          setId(data[index - 1]?.id || data[data.length - 1]?.id)
           // setCurrentIndex((pre) => (pre - 1 < 0 ? data.length - 1 : pre - 1))
           break
         case 'ArrowDown':
           // setCurrentIndex((pre) => (pre + 1 >= data.length ? 0 : pre + 1))
-          setId((id) => {
-            const index = data.findIndex((item) => item.id == id)
-            return data[index + 1]?.id || data[0]?.id
-          })
+          setId(data[index + 1]?.id || data[0]?.id)
           break
         case 'Enter':
           {
-            setHighlightedIndex(data.findIndex((item) => item.id == id))
+            setHighlightedIndex(index)
             const content = data.find((item) => item.id == id)?.content
             // 写入剪贴板
             if (content) navigator.clipboard.writeText(content)
