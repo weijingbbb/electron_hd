@@ -7,7 +7,6 @@ export default function Search() {
   const [search, setSearch] = useState('')
 
   const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
-    console.log(e.target.value)
     setSearch(e.target.value)
     setData(initData.filter((item) => item.content.includes(e.target.value)))
   }

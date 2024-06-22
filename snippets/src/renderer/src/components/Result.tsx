@@ -1,7 +1,19 @@
 import useCode from '@renderer/hooks/useCode'
+import { useEffect } from 'react'
 
 export default function Result() {
   const { data } = useCode()
+
+  const handleKeyDown = (e: KeyboardEvent) => {
+    console.log(0)
+  }
+
+  useEffect(() => {
+    document.addEventListener('keydown', handleKeyDown)
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [])
   return (
     <main className="  py-3 bg-slate-50 px-3 rounded-bl-lg rounded-br-lg -mt-[10px]">
       {data.map((item) => {
