@@ -1,5 +1,6 @@
+import '@renderer/assets/global.scss'
 import '@renderer/assets/tailwind.css'
-import './assets/main.css'
+// import './assets/main.css'
 
 import React from 'react'
 import ReactDOM from 'react-dom/client'
