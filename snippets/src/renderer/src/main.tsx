@@ -1,3 +1,4 @@
+import '@icon-park/react/styles/index.css'
 import '@renderer/assets/global.scss'
 import '@renderer/assets/tailwind.css'
 // import './assets/main.css'

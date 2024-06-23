@@ -13,6 +13,6 @@ export default function ErrorMessage() {
     return () => clearTimeout(timer)
   }, [])
 
-  if (!error) return <></>
-  return <div className="text-center text-white bg-red-500 ">{error}</div>
+  // 有错误信息则显示错误信息
+  return error ? <div className="text-center text-white bg-red-500 ">{error}</div> : <></>
 }
