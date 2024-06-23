@@ -3,12 +3,10 @@ import { useStore } from '@renderer/store/useStore'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 
 export default () => {
-  // const { data, setData } = useCode()
   const data = useStore((state) => state.data)
   const setData = useStore((state) => state.setData)
-  // 选中的项
-  // const [currentIndex, setCurrentIndex] = useState(0)
-  const [id, setId] = useState(0)
+  const id = useStore((state) => state.id)
+  const setId = useStore((state) => state.setId)
   // 回车敲的项
   const [highlightedIndex, setHighlightedIndex] = useState<number | null>(null)
   const index = useMemo(() => {
@@ -42,10 +40,8 @@ export default () => {
       switch (e.code) {
         case 'ArrowUp':
           setId(data[index - 1]?.id || data[data.length - 1]?.id)
-          // setCurrentIndex((pre) => (pre - 1 < 0 ? data.length - 1 : pre - 1))
           break
         case 'ArrowDown':
-          // setCurrentIndex((pre) => (pre + 1 >= data.length ? 0 : pre + 1))
           setId(data[index + 1]?.id || data[0]?.id)
           break
         case 'Enter':

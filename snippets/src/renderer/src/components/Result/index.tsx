@@ -1,5 +1,5 @@
 // import css from './index.module.scss'
-import useCodeSelect from '@renderer/hooks/useCodeSelect'
+import useCodeSelect from '@renderer/hooks/useSelect'
 import classNames from 'classnames'
 import './index.scss'
 
