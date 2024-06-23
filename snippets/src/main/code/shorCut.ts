@@ -5,10 +5,9 @@ interface HotKeyProps {
   type: HotKeyType
   shortCur: string
 }
-type HotKeyDictionary = {
+const HotKeyDictionary: {
   [key in HotKeyType]?: string
-}
-const HotKeyDictionary: HotKeyDictionary = {}
+} = {}
 
 // 注册热键
 export const registerShortCut = () => {

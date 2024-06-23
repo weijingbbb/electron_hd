@@ -1,11 +1,14 @@
+import { useEffect } from 'react'
 import Result from './components/Result'
 import Search from './components/Search'
+import useShortCur from './hooks/useShortCur'
 
 function App(): JSX.Element {
-  window.api.shortCur({
-    type: 'renderWindow',
-    shortCur: 'CommandOrControl+;'
-  })
+  const { registerRenderWindowShortCut } = useShortCur()
+  useEffect(() => {
+    // 注册窗口切换快捷键
+    registerRenderWindowShortCut('CommandOrControl+;')
+  }, [])
   return (
     <>
       <Search />
