@@ -1,20 +1,40 @@
-import { BrowserWindow, app, dialog, globalShortcut } from 'electron'
+import { BrowserWindow, IpcMainEvent, app, dialog, globalShortcut, ipcMain } from 'electron'
+
+type HotKeyType = 'renderWindow' | 'search'
+interface HotKeyProps {
+  type: HotKeyType
+  shortCur: string
+}
+type HotKeyDictionary = {
+  [key in HotKeyType]?: string
+}
+const HotKeyDictionary: HotKeyDictionary = {}
 
 // 注册热键
-export const registerShortCut = (win: BrowserWindow) => {
-  const key = 'CommandOrControl+;'
-
-  app.whenReady().then(() => {
-    const ret = globalShortcut.register(key, () => {
-      win?.isVisible() ? win.hide() : win?.show()
-    })
+export const registerShortCut = () => {
+  ipcMain.on('shortCur', (event: IpcMainEvent, { type, shortCur }: HotKeyProps) => {
+    // 如果注册了,则不再进行注册
+    if (HotKeyDictionary[type] === shortCur) return
+    HotKeyDictionary[type] = shortCur
+    const win = BrowserWindow.fromWebContents(event.sender)!
+    let ret
+    switch (type) {
+      case 'renderWindow':
+        ret = renderWindow(win, shortCur)
+        break
+    }
     if (!ret) {
       dialog.showErrorBox('提示', '热键注册失败')
-      console.log('热键注册失败')
+      console.log('热键注册失败, 类型为：', type, '值为：', shortCur)
     }
-    // 检查是否注册成功
-    console.log('快捷键盘初始化注册成功：',globalShortcut.isRegistered(key))
   })
+
+  // 注册切换窗口快捷键
+  function renderWindow(win: BrowserWindow, shortCur: string) {
+    return globalShortcut.register(shortCur, () => {
+      win?.isVisible() ? win.hide() : win?.show()
+    })
+  }
 
   app.on('will-quit', () => {
     // 注销快捷键

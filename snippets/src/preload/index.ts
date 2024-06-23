@@ -5,6 +5,9 @@ import { contextBridge, ipcRenderer } from 'electron'
 const api = {
   hideWindow: () => {
     ipcRenderer.send('hideWindow')
+  },
+  shortCur: (str: string) => {
+    ipcRenderer.send('shortCur', str)
   }
 }
 
