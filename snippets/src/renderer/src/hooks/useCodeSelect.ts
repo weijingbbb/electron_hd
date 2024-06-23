@@ -3,7 +3,7 @@ import { useCallback, useEffect, useMemo, useState } from 'react'
 import useCode from './useCode'
 
 export default () => {
-  const { data } = useCode()
+  const { data, setData } = useCode()
   // 选中的项
   // const [currentIndex, setCurrentIndex] = useState(0)
   const [id, setId] = useState(0)
@@ -15,15 +15,23 @@ export default () => {
   }, [data, id])
 
   // 优化后的选项列表项，适配键盘Enter、鼠标双击事件
-  const handleSelectItem = useCallback(() => {
+  const handleSelectItem = useCallback(async () => {
     setHighlightedIndex(index)
     const content = data.find((item) => item.id == id)?.content
-    navigator.clipboard.writeText(content!)
+    await navigator.clipboard.writeText(content!)
     window.api.hideWindow()
+    clear()
   }, [index, id])
   const handleMouseEnter = useCallback((selectItem: DataType) => {
     setId(selectItem.id)
   }, [])
+
+  // 关闭窗口后，清空旧数据
+  const clear = () => {
+    setData([])
+    setId(0)
+    setHighlightedIndex(null)
+  }
 
   const handleKeyDown = useCallback(
     (e: KeyboardEvent) => {

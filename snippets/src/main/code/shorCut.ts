@@ -2,7 +2,7 @@ import { BrowserWindow, app, dialog, globalShortcut } from 'electron'
 
 // 注册热键
 export const registerShortCut = (win: BrowserWindow) => {
-  const key = 'Option+CommandOrControl+I'
+  const key = 'CommandOrControl+;'
 
   app.whenReady().then(() => {
     const ret = globalShortcut.register(key, () => {
