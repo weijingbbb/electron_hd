@@ -1,12 +1,12 @@
 // 注册快捷键的钩子
 export default () => {
-  const registerRenderWindowShortCut = (shortCur: string) => {
-    console.log('registerRenderWindowShortCut')
-
-    window.api.shortCur({
+  const registerRenderWindowShortCut = async (shortCur: string) => {
+    const result = await window.api.shortCur({
       type: 'renderWindow',
       shortCur
     })
+    // 渲染不同的提示
+    alert(result)
   }
   return {
     registerRenderWindowShortCut

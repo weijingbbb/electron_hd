@@ -1,4 +1,10 @@
-import { BrowserWindow, IpcMainEvent, app, dialog, globalShortcut, ipcMain } from 'electron'
+import {
+  BrowserWindow,
+  IpcMainInvokeEvent,
+  app,
+  globalShortcut,
+  ipcMain
+} from 'electron'
 
 type HotKeyType = 'renderWindow' | 'search'
 interface HotKeyProps {
@@ -11,20 +17,17 @@ const HotKeyDictionary: {
 
 // 注册热键
 export const registerShortCut = () => {
-  ipcMain.on('shortCur', (event: IpcMainEvent, { type, shortCur }: HotKeyProps) => {
+  ipcMain.handle('shortCur', (event: IpcMainInvokeEvent, { type, shortCur }: HotKeyProps) => {
     // 如果注册了,则不再进行注册
     if (HotKeyDictionary[type] === shortCur) return
     HotKeyDictionary[type] = shortCur
     const win = BrowserWindow.fromWebContents(event.sender)!
-    let ret
+
     switch (type) {
       case 'renderWindow':
-        ret = renderWindow(win, shortCur)
+        return renderWindow(win, shortCur)
+      default:
         break
-    }
-    if (!ret) {
-      dialog.showErrorBox('提示', '热键注册失败')
-      console.log('热键注册失败, 类型为：', type, '值为：', shortCur)
     }
   })
 

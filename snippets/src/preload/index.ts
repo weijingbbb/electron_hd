@@ -7,7 +7,7 @@ const api = {
     ipcRenderer.send('hideWindow')
   },
   shortCur: (str: string) => {
-    ipcRenderer.send('shortCur', str)
+    return ipcRenderer.invoke('shortCur', str)
   }
 }
 
