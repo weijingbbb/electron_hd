@@ -6,6 +6,8 @@ interface StateProps {
   setData: (data: DataType[]) => void
   search: string
   setSearch: (val: string) => void
+  error: string
+  setError: (val: string) => void
 }
 
 export const useStore = create<StateProps>((set) => {
@@ -13,6 +15,8 @@ export const useStore = create<StateProps>((set) => {
     data: [],
     setData: (data) => set({ data }),
     search: '',
-    setSearch: (search) => set({ search })
+    setSearch: (search) => set({ search }),
+    error: '',
+    setError: (error) => set({ error })
   }
 })

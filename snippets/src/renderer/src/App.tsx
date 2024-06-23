@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import ErrorMessage from './components/Error'
 import Result from './components/Result'
 import Search from './components/Search'
 import useShortCur from './hooks/useShortCur'
@@ -13,6 +14,7 @@ function App(): JSX.Element {
     <>
       <Search />
       <Result />
+      <ErrorMessage />
     </>
   )
 }
