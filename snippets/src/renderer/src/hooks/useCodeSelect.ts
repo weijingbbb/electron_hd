@@ -1,9 +1,11 @@
 import { DataType } from '@renderer/data'
+import { useStore } from '@renderer/store/useStore'
 import { useCallback, useEffect, useMemo, useState } from 'react'
-import useCode from './useCode'
 
 export default () => {
-  const { data, setData } = useCode()
+  // const { data, setData } = useCode()
+  const data = useStore((state) => state.data)
+  const setData = useStore((state) => state.setData)
   // 选中的项
   // const [currentIndex, setCurrentIndex] = useState(0)
   const [id, setId] = useState(0)
