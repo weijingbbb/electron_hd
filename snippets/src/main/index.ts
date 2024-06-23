@@ -1,49 +1,6 @@
-import { electronApp, is, optimizer } from '@electron-toolkit/utils'
-import { BrowserWindow, app, ipcMain, shell } from 'electron'
-import { join } from 'path'
-import icon from '../../resources/icon.png?asset'
-import './code/ipc'
-
-function createWindow(): void {
-  // Create the browser window.
-  const mainWindow = new BrowserWindow({
-    width: 400,
-    height: 250,
-    x: 1600,
-    y: 0,
-    show: false,
-    autoHideMenuBar: true,
-    frame: false,
-    transparent: true,
-    // 保持置顶
-    // alwaysOnTop: true,
-    ...(process.platform === 'linux' ? { icon } : {}),
-    webPreferences: {
-      preload: join(__dirname, '../preload/index.js'),
-      sandbox: false
-    }
-  })
-
-  mainWindow.on('ready-to-show', () => {
-    mainWindow.show()
-  })
-
-  mainWindow.webContents.setWindowOpenHandler((details) => {
-    shell.openExternal(details.url)
-    return { action: 'deny' }
-  })
-
-  // HMR for renderer base on electron-vite cli.
-  // Load the remote URL for development or the local html file for production.
-  if (is.dev && process.env['ELECTRON_RENDERER_URL']) {
-    mainWindow.loadURL(process.env['ELECTRON_RENDERER_URL'])
-  } else {
-    mainWindow.loadFile(join(__dirname, '../renderer/index.html'))
-  }
-
-  // 如果是开发环境，打开开发者工具
-  if (is.dev) mainWindow.webContents.openDevTools()
-}
+import { electronApp, optimizer } from '@electron-toolkit/utils'
+import { BrowserWindow, app, ipcMain } from 'electron'
+import core from './code'
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
@@ -62,12 +19,11 @@ app.whenReady().then(() => {
   // IPC test
   ipcMain.on('ping', () => console.log('pong'))
 
-  createWindow()
 
   app.on('activate', function () {
     // On macOS it's common to re-create a window in the app when the
     // dock icon is clicked and there are no other windows open.
-    if (BrowserWindow.getAllWindows().length === 0) createWindow()
+    if (BrowserWindow.getAllWindows().length === 0) core.createWindow()
   })
 })
 
