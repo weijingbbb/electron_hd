@@ -9,6 +9,7 @@ declare global {
       shortCur: (params: any) => Promise<boolean>
       setIgnoreMouseEvents: (ignore: boolean, options?: { forward: boolean }) => void
       openConfigWindow: () => void
+      sql: <T>(sql: string, type: SqlActionType) => Promise<T>
     }
   }
 }

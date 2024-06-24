@@ -1,4 +1,4 @@
-import { db } from '../db/connect'
+import { db } from './connect'
 
 // 查询所有数据
 export const findAll = (sql: string) => {
