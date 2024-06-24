@@ -1,0 +1,13 @@
+.content-page {
+  @apply  w-screen h-screen bg-gray-100;
+  display: grid;
+  grid-template: 'list content' auto / 150px auto;
+  gap: 1px;
+  .list {
+    grid-area: list;
+    @apply bg-slate-50;
+  }
+  .content {
+    grid-area: content;
+  }
+}

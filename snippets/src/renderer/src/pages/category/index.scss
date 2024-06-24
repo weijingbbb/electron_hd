@@ -1,0 +1,23 @@
+.category-page {
+  display: grid;
+  grid-template:
+    "categories content" auto
+    "nav content" 30px/120px auto;
+  gap: 1px;
+  @apply h-screen bg-gray-200;
+  div {
+    @apply bg-white;
+  }
+  .categories {
+    @apply bg-gray-100;
+    grid-area: categories;
+  }
+  .nav {
+    grid-area: nav;
+    @apply flex justify-around bg-gray-100;
+
+  }
+  .content {
+    grid-area: content;
+  }
+}
