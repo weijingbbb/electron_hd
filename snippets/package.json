@@ -24,9 +24,11 @@
     "@electron-toolkit/preload": "^3.0.0",
     "@electron-toolkit/utils": "^3.0.0",
     "@icon-park/react": "^1.4.2",
+    "@remix-run/router": "^1.16.1",
     "antd": "^5.18.3",
     "classnames": "^2.5.1",
     "electron-updater": "^6.1.7",
+    "react-router-dom": "6",
     "zustand": "^4.5.2"
   },
   "devDependencies": {

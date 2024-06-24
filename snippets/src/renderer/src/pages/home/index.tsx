@@ -1,11 +1,11 @@
+import ErrorMessage from '@renderer/components/Error'
+import Result from '@renderer/components/Result'
+import Search from '@renderer/components/Search'
+import useIgnoreMouseEvents from '@renderer/hooks/useIgnoreMouseEvents'
+import useShortCur from '@renderer/hooks/useShortCur'
 import { MutableRefObject, useEffect, useRef } from 'react'
-import ErrorMessage from './components/Error'
-import Result from './components/Result'
-import Search from './components/Search'
-import useIgnoreMouseEvents from './hooks/useIgnoreMouseEvents'
-import useShortCur from './hooks/useShortCur'
 
-function App(): JSX.Element {
+function Home(): JSX.Element {
   const mainRef = useRef<HTMLDivElement | null>(null)
   const { registerRenderWindowShortCut } = useShortCur()
   const { setIgnoreMouseEvents } = useIgnoreMouseEvents()
@@ -25,4 +25,4 @@ function App(): JSX.Element {
   )
 }
 
-export default App
+export default Home
