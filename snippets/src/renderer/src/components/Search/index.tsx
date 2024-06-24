@@ -1,15 +1,17 @@
 import { SettingTwo } from '@icon-park/react'
 import useSearch from '@renderer/hooks/useSearch'
+import { Input } from 'antd'
 
 export default function Search() {
   const { search, handleSearch } = useSearch()
   return (
     <main className="p-3 rounded-lg bg-slate-50 drag">
-      <section className="flex items-center rounded-lg nodrag">
-        <input
-          className="w-full p-1 mr-2 rounded-md outline-none text-ml text-slate-600 bg-slate-200"
+      <section className="flex items-center p-1 rounded-lg bg-slate-200 nodrag">
+        <Input
+          className="w-full p-1 mr-2 rounded-md outline-none text-ml text-slate-600 "
           value={search}
           onChange={handleSearch}
+          // autoFocus
         />
         <SettingTwo
           theme="outline"

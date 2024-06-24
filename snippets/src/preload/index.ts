@@ -3,11 +3,17 @@ import { contextBridge, ipcRenderer } from 'electron'
 
 // Custom APIs for renderer
 const api = {
+  // 隐藏窗口
   hideWindow: () => {
     ipcRenderer.send('hideWindow')
   },
+  // 注册快捷键
   shortCur: (str: string) => {
     return ipcRenderer.invoke('shortCur', str)
+  },
+  // 设置鼠标穿透
+  setIgnoreMouseEvents: (ignore, options) => {
+    ipcRenderer.send('setIgnoreMouseEvents', ignore, options)
   }
 }
 

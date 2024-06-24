@@ -9,7 +9,7 @@ export default () => {
       shortCur
     })
     // 渲染不同的提示
-    console.log('注册快捷键失败',result)
+    console.log('注册快捷键失败', result)
     if (result || result === undefined) return
     setError('注册快捷键失败')
   }

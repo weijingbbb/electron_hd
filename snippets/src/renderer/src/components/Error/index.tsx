@@ -1,4 +1,5 @@
 import { useStore } from '@renderer/store/useStore'
+import { Alert } from 'antd'
 import { useEffect } from 'react'
 
 export default function ErrorMessage() {
@@ -14,5 +15,10 @@ export default function ErrorMessage() {
   }, [])
 
   // 有错误信息则显示错误信息
-  return error ? <div className="text-center text-white bg-red-500 ">{error}</div> : <></>
+  return error ? (
+    // <div className="text-center text-white bg-red-500 ">{error}</div>
+    <Alert message={error} type="error" showIcon></Alert>
+  ) : (
+    <></>
+  )
 }

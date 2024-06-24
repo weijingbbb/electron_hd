@@ -9,6 +9,7 @@ function App(): JSX.Element {
   useEffect(() => {
     // 注册窗口切换快捷键
     registerRenderWindowShortCut('CommandOrControl+;')
+    window.api.setIgnoreMouseEvents(true)
   }, [])
   return (
     <>
