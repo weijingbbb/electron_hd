@@ -19,3 +19,12 @@ db.exec(`
     created_at text not null
   )
 `)
+
+// 插入数据
+// db.exec(`
+//   INSERT INTO categories (name, created_at) VALUES('JavaScript', datetime());
+// `)
+
+// db.exec(`
+//   INSERT INTO contents (title, content, category_id, created_at) VALUES('react', 'react16', 1, datetime());
+// `)
