@@ -12,6 +12,7 @@ export function createConfigWindow() {
     width: 1200,
     height: 400,
     show: false,
+    frame: true,
     autoHideMenuBar: true,
     ...(process.platform === 'linux' ? { icon } : {}),
     webPreferences: {

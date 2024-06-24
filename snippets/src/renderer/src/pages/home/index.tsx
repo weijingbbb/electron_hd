@@ -3,7 +3,6 @@ import Result from '@renderer/components/Result'
 import Search from '@renderer/components/Search'
 import useIgnoreMouseEvents from '@renderer/hooks/useIgnoreMouseEvents'
 import useShortCur from '@renderer/hooks/useShortCur'
-import { Button } from 'antd'
 import { MutableRefObject, useEffect, useRef } from 'react'
 
 function Home(): JSX.Element {
@@ -15,6 +14,7 @@ function Home(): JSX.Element {
     // 注册窗口切换快捷键
     registerRenderWindowShortCut('CommandOrControl+;')
     setIgnoreMouseEvents(mainRef as MutableRefObject<HTMLDivElement>)
+    window.api.openConfigWindow()
   }, [])
   return (
     <>
@@ -22,13 +22,6 @@ function Home(): JSX.Element {
         <Search />
         <Result />
         <ErrorMessage />
-        <Button
-          onClick={() => {
-            window.api.sql('select * from categories', 'findAll').then((res) => {
-              console.log(res)
-            })
-          }}
-        >查询数据</Button>
       </main>
     </>
   )

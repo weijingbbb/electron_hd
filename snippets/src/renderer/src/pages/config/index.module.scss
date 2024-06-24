@@ -1,0 +1,18 @@
+.container {
+  @apply w-screen h-screen bg-slate-300;
+  display: grid;
+  gap: 3px;
+  grid-template:
+    " . . " 30px
+    "category content" auto
+    "nav content" 30px /100px 1fr;
+  div {
+    @apply bg-white;
+    &.content {
+      grid-area: content;
+    }
+    &.nav {
+      grid-area: nav;
+    }
+  }
+}
