@@ -1,6 +1,6 @@
 import { electronApp, optimizer } from '@electron-toolkit/utils'
 import { BrowserWindow, app, ipcMain } from 'electron'
-import core from './code'
+import core from './core'
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.

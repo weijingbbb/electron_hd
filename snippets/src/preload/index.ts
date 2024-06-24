@@ -14,7 +14,11 @@ const api = {
   // 设置鼠标穿透
   setIgnoreMouseEvents: (ignore, options) => {
     ipcRenderer.send('setIgnoreMouseEvents', ignore, options)
-  }
+  },
+  // 创建打开配置窗口
+  openConfigWindow: () => {
+    ipcRenderer.send('openConfigWindow')
+  },
 }
 
 // Use `contextBridge` APIs to expose Electron APIs to
