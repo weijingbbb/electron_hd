@@ -5,6 +5,7 @@ import Home from '@renderer/pages/home'
 import { createHashRouter } from 'react-router-dom'
 
 import CategoryLoader from '@renderer/pages/category/loader'
+import ContentListLoader from '@renderer/pages/content-list/loader'
 
 const routers = createHashRouter([
   {
@@ -23,6 +24,7 @@ const routers = createHashRouter([
           {
             path: 'content-list/:cid?',
             // index: true, // 这个意思代表如果没有路径匹配，则默认跳转到此页面
+            loader: ContentListLoader,
             element: <ContentList />
           }
         ]

@@ -35,17 +35,27 @@ function initData() {
   // 查询数据，如果有的情况下，则不用生成虚拟数据
   const content = findAll('select * from contents')
   if (content.length) {
-    // return
+    return
   }
 
   // 生成类目数据
-  for (let index = 0; index < 10; index++) {
-    const name = Random.ctitle(5, 10)
+  for (let i = 0; i < 10; i++) {
+    const name = Random.province()
     db.exec(`
         INSERT INTO categories (name, created_at) VALUES('${name}', datetime());
       `)
+    // 生成列表数据
+    for (let index = 0; index < 10; index++) {
+      const title = Random.city()
+      const content = Random.paragraph(50, 100)
+      db.exec(`
+          INSERT INTO contents (title, content, category_id, created_at) VALUES('${title}', '${content}', ${i}, datetime());
+        `)
+      // 生成列表数据
+
+    }
   }
-  // 生成列表数据
+
 }
 
 initData()
