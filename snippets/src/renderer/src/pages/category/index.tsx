@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Link, Outlet, useLoaderData } from 'react-router-dom'
+import { NavLink, Outlet, useLoaderData } from 'react-router-dom'
 import './index.scss'
 
 export default function Category() {
@@ -13,14 +13,22 @@ export default function Category() {
           {categories.map((item) => {
             const { id, name } = item
             return (
-              <Link
+              <NavLink
                 key={id}
                 to={`/config/category/content-list/${id}`}
-                className={current?.id === id ? 'active item' : 'item'}
+                className={({ isActive }) => (isActive ? 'active item' : 'item')}
                 onClick={() => setCurrent(item)}
               >
                 {name}
-              </Link>
+              </NavLink>
+              // <Link
+              //   key={id}
+              //   to={`/config/category/content-list/${id}`}
+              //   className={classnames('item', { active: current?.id === id })}
+              //   onClick={() => setCurrent(item)}
+              // >
+              //   {name}
+              // </Link>
             )
           })}
         </div>
