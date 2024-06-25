@@ -1,5 +1,5 @@
 .content-page {
-  @apply flex flex-col py-4 px-4 h-full bg-white;
+  @apply flex flex-col py-4 px-4 h-full bg-white  overflow-y-scroll ;
   h1 {
     @apply text-base font-bold text-slate-600 opacity-95;
   }

@@ -1,5 +1,5 @@
 .content-list-page {
-  @apply  w-screen h-screen bg-red-200 ;
+  @apply  w-screen h-screen bg-red-200 overflow-y-scroll ;
   display: grid;
   grid-template: 'list content' auto / 200px auto;
   gap: 4px;

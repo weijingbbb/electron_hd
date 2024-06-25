@@ -9,7 +9,7 @@
     @apply px-2 h-full text-xs bg-slate-300 text-slate-700 overflow-y-auto ;
     grid-area: categories;
     .item {
-      @apply flex items-center mb-1 py-1 px-2 truncate cursor-pointer rounded-md;
+      @apply flex items-center mb-1 py-1 px-2 w-full truncate cursor-pointer rounded-md;
       &:hover {
         @apply bg-blue-500  text-white;
         span {

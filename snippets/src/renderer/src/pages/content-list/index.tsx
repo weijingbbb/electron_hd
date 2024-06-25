@@ -28,7 +28,7 @@ export default function Content() {
               to={to}
               className={({ isActive }) => (isActive ? 'active item' : 'item')}
             >
-              <span>{title}</span>
+              <span className="truncate">{title}</span>
               <span>{dayjs(created_at).format('YY/MM/DD')}</span>
             </NavLink>
           )

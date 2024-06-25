@@ -38,11 +38,11 @@ export default function Category() {
                 onClick={() => setCurrent(item)}
               >
                 {current?.id === id ? (
-                  <FolderOpen theme="outline" size="18" fill="#333" />
+                  <FolderOpen theme="outline" size="16" strokeWidth={4} />
                 ) : (
-                  <FolderClose theme="outline" size="18" fill="#333" />
+                  <FolderClose theme="outline" size="16" />
                 )}
-                {name}
+                <span className='truncate '>{name}</span>
               </Link>
             )
           })}
