@@ -10,6 +10,7 @@ specifiers:
   '@icon-park/react': ^1.4.2
   '@remix-run/router': ^1.16.1
   '@types/better-sqlite3': ^7.6.10
+  '@types/mockjs': ^1.0.10
   '@types/node': ^18.19.9
   '@types/react': ^18.2.48
   '@types/react-dom': ^18.2.18
@@ -24,6 +25,7 @@ specifiers:
   electron-vite: ^2.0.0
   eslint: ^8.56.0
   eslint-plugin-react: ^7.33.2
+  mockjs: ^1.1.0
   postcss: ^8.4.38
   prettier: ^3.2.4
   react: ^18.2.0
@@ -41,10 +43,12 @@ dependencies:
   '@icon-park/react': 1.4.2_nnrd3gsncyragczmpvfhocinkq
   '@remix-run/router': 1.16.1
   '@types/better-sqlite3': 7.6.10
+  '@types/mockjs': 1.0.10
   antd: 5.18.3_nnrd3gsncyragczmpvfhocinkq
   better-sqlite3: 11.0.0
   classnames: 2.5.1
   electron-updater: 6.2.1
+  mockjs: 1.1.0
   react-router-dom: 6.23.1_nnrd3gsncyragczmpvfhocinkq
   zustand: 4.5.2_3vdbhqr2ncalcx7opnshezpx3q
 
@@ -1490,6 +1494,10 @@ packages:
     dependencies:
       '@types/node': 18.19.38
 
+  /@types/mockjs/1.0.10:
+    resolution: {integrity: sha512-SXgrhajHG7boLv6oU93CcmdDm0HYRiceuz6b+7z+/2lCJPTWDv0V5YiwFHT2ejE4bQqgSXQiVPQYPWv7LGsK1g==}
+    dev: false
+
   /@types/ms/0.7.34:
     resolution: {integrity: sha512-nG96G3Wp6acyAgJqGasjODb+acrI7KltPiRxzHPXnP3NgI28bpQDRv53olbqGXbfcgF5aiiHmO3xpwEpS5Ld9g==}
     dev: true
@@ -2413,7 +2421,6 @@ packages:
   /commander/5.1.0:
     resolution: {integrity: sha512-P0CysNDQ7rtVw4QIQtm+MRxV66vKFSvlsQvGYXZWR3qFU0jlMKHZZZgw8e+8DSah4UDKMqnknRDQz+xuQXQ/Zg==}
     engines: {node: '>= 6'}
-    dev: true
 
   /compare-version/0.1.2:
     resolution: {integrity: sha512-pJDh5/4wrEnXX/VWRZvruAGHkzKdr46z11OlTPN+VrATlWWhSKewNCJ1futCO5C7eJB3nPMFZA1LeYtcFboZ2A==}
@@ -4282,6 +4289,13 @@ packages:
     engines: {node: '>=10'}
     hasBin: true
     dev: true
+
+  /mockjs/1.1.0:
+    resolution: {integrity: sha512-eQsKcWzIaZzEZ07NuEyO4Nw65g0hdWAyurVol1IPl1gahRwY+svqzfgfey8U8dahLwG44d6/RwEzuK52rSa/JQ==}
+    hasBin: true
+    dependencies:
+      commander: 5.1.0
+    dev: false
 
   /ms/2.1.2:
     resolution: {integrity: sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w==}

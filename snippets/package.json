@@ -26,10 +26,12 @@
     "@icon-park/react": "^1.4.2",
     "@remix-run/router": "^1.16.1",
     "@types/better-sqlite3": "^7.6.10",
+    "@types/mockjs": "^1.0.10",
     "antd": "^5.18.3",
     "better-sqlite3": "^11.0.0",
     "classnames": "^2.5.1",
     "electron-updater": "^6.1.7",
+    "mockjs": "^1.1.0",
     "react-router-dom": "6",
     "zustand": "^4.5.2"
   },

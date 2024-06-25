@@ -1,4 +1,6 @@
+import { Random } from 'mockjs'
 import { db } from './connect'
+import { findAll } from './query'
 
 // 创建栏目表，如果表已存在，再不用创建
 db.exec(`
@@ -28,3 +30,22 @@ db.exec(`
 // db.exec(`
 //   INSERT INTO contents (title, content, category_id, created_at) VALUES('react', 'react16', 1, datetime());
 // `)
+
+function initData() {
+  // 查询数据，如果有的情况下，则不用生成虚拟数据
+  const content = findAll('select * from contents')
+  if (content.length) {
+    // return
+  }
+
+  // 生成类目数据
+  for (let index = 0; index < 10; index++) {
+    const name = Random.ctitle(5, 10)
+    db.exec(`
+        INSERT INTO categories (name, created_at) VALUES('${name}', datetime());
+      `)
+  }
+  // 生成列表数据
+}
+
+initData()
