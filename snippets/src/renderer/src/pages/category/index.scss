@@ -6,12 +6,15 @@
   gap: 1px;
   @apply h-screen bg-gray-200;
   .categories {
-    @apply h-full bg-gray-100 text-xs text-slate-700 overflow-y-auto;
+    @apply px-2 h-full bg-gray-100 text-xs text-slate-700 overflow-y-auto;
     grid-area: categories;
     .item {
-      @apply py-1 px-2 truncate block cursor-pointer;
+      @apply  mb-1 py-1 px-2 truncate block cursor-pointer rounded-md;
       &:hover {
-        @apply bg-blue-300;
+        @apply bg-blue-500  text-white;
+      }
+      &.active {
+        @apply bg-blue-600 text-white;
       }
     }
   }
