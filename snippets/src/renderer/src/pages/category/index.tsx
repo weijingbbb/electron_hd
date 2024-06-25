@@ -1,11 +1,18 @@
-import { useState } from 'react'
-import { NavLink, Outlet, useLoaderData } from 'react-router-dom'
+import { useEffect } from 'react'
+import { NavLink, Outlet, useLoaderData, useNavigate } from 'react-router-dom'
 import './index.scss'
 
 export default function Category() {
-  const [current, setCurrent] = useState<CategoryType>()
+  // const [current, setCurrent] = useState<CategoryType>()
   const categories = useLoaderData() as CategoryType[]
 
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    if (categories.length) {
+      navigate(`/config/category/content-list/${categories[0].id}`)
+    }
+  }, [categories])
   return (
     <>
       <main className="category-page">
@@ -17,7 +24,7 @@ export default function Category() {
                 key={id}
                 to={`/config/category/content-list/${id}`}
                 className={({ isActive }) => (isActive ? 'active item' : 'item')}
-                onClick={() => setCurrent(item)}
+                // onClick={() => setCurrent(item)}
               >
                 {name}
               </NavLink>

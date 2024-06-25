@@ -3,6 +3,9 @@ import './index.scss'
 
 export default function Content() {
   const contents = useLoaderData() as ContentType[]
+
+
+
   return (
     <main className="content-page">
       <div className="list">
