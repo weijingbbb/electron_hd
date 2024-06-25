@@ -1,7 +1,7 @@
 .container {
   @apply w-screen h-screen bg-slate-300;
   display: grid;
-  gap: 3px;
+  gap: 10px;
   grid-template:
     " . . " 30px
     "category content" auto

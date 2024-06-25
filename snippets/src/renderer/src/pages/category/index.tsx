@@ -1,9 +1,11 @@
-import { useEffect } from 'react'
-import { NavLink, Outlet, useLoaderData, useNavigate } from 'react-router-dom'
+import { FolderClose, FolderOpen } from '@icon-park/react'
+import classnames from 'classnames'
+import { useEffect, useState } from 'react'
+import { Link, Outlet, useLoaderData, useNavigate } from 'react-router-dom'
 import './index.scss'
 
 export default function Category() {
-  // const [current, setCurrent] = useState<CategoryType>()
+  const [current, setCurrent] = useState<CategoryType>()
   const categories = useLoaderData() as CategoryType[]
 
   const navigate = useNavigate()
@@ -11,6 +13,7 @@ export default function Category() {
   useEffect(() => {
     if (categories.length) {
       navigate(`/config/category/content-list/${categories[0].id}`)
+      setCurrent(categories[0])
     }
   }, [categories])
   return (
@@ -20,22 +23,27 @@ export default function Category() {
           {categories.map((item) => {
             const { id, name } = item
             return (
-              <NavLink
-                key={id}
-                to={`/config/category/content-list/${id}`}
-                className={({ isActive }) => (isActive ? 'active item' : 'item')}
-                // onClick={() => setCurrent(item)}
-              >
-                {name}
-              </NavLink>
-              // <Link
+              // <NavLink
               //   key={id}
               //   to={`/config/category/content-list/${id}`}
-              //   className={classnames('item', { active: current?.id === id })}
-              //   onClick={() => setCurrent(item)}
+              //   className={({ isActive }) => (isActive ? 'active item' : 'item')}
+              //   // onClick={() => setCurrent(item)}
               // >
               //   {name}
-              // </Link>
+              // </NavLink>
+              <Link
+                key={id}
+                to={`/config/category/content-list/${id}`}
+                className={classnames('item', { active: current?.id === id })}
+                onClick={() => setCurrent(item)}
+              >
+                {current?.id === id ? (
+                  <FolderOpen theme="outline" size="18" fill="#333" />
+                ) : (
+                  <FolderClose theme="outline" size="18" fill="#333" />
+                )}
+                {name}
+              </Link>
             )
           })}
         </div>

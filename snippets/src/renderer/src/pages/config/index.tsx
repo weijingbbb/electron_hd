@@ -4,7 +4,7 @@ import { Outlet } from 'react-router-dom'
 export default function Config() {
   return (
     <>
-      <main>
+      <main className='h-full '>
         <Outlet />
         {/* <div></div>
         <div></div>
