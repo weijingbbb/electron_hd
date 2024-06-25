@@ -1,6 +1,6 @@
 import Category from '@renderer/pages/category'
 import Config from '@renderer/pages/config'
-import Content from '@renderer/pages/content'
+import ContentList from '@renderer/pages/content-list'
 import Home from '@renderer/pages/home'
 import { createHashRouter } from 'react-router-dom'
 
@@ -16,13 +16,14 @@ const routers = createHashRouter([
     element: <Config />,
     children: [
       {
-        path: '',
+        path: 'category',
         element: <Category />,
         loader: CategoryLoader,
         children: [
           {
-            index: true,
-            element: <Content />
+            path: 'content-list/:cid?',
+            // index: true, // 这个意思代表如果没有路径匹配，则默认跳转到此页面
+            element: <ContentList />
           }
         ]
       }

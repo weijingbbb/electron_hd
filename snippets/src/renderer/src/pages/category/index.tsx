@@ -1,4 +1,4 @@
-import { Outlet, useLoaderData } from 'react-router-dom'
+import { Link, Outlet, useLoaderData } from 'react-router-dom'
 import './index.scss'
 
 export default function Category() {
@@ -9,7 +9,12 @@ export default function Category() {
       <main className="category-page">
         <div className="categories">
           {categories.map((item) => {
-            return <div key={item.id}>{item.name}</div>
+            const { id, name } = item
+            return (
+              <Link className="item" key={id} to={`/config/category/content-list/${id}`}>
+                {name}
+              </Link>
+            )
           })}
         </div>
         <div className="nav">nav</div>

@@ -5,12 +5,15 @@
     "nav content" 30px/120px auto;
   gap: 1px;
   @apply h-screen bg-gray-200;
-  div {
-    @apply bg-white;
-  }
   .categories {
-    @apply bg-gray-100;
+    @apply h-full bg-gray-100 text-xs text-slate-700 overflow-y-auto;
     grid-area: categories;
+    .item {
+      @apply py-1 px-2 truncate block cursor-pointer;
+      &:hover {
+        @apply bg-blue-300;
+      }
+    }
   }
   .nav {
     grid-area: nav;
