@@ -14,3 +14,4 @@ type ContentType = {
   created_at: string
 }
 
+type SqlParams = Record<string, any>

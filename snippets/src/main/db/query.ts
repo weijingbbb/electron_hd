@@ -13,8 +13,8 @@ export const insert = (sql: string) => {
   return db.prepare(sql).run().lastInsertRowid
 }
 // 更新数据
-export const update = (sql: string) => {
-  return db.prepare(sql).run().changes
+export const update = (sql: string, params: SqlParams) => {
+  return db.prepare(sql).run(params).changes
 }
 // 删除数据
 export const del = (sql: string) => {

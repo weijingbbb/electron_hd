@@ -6,7 +6,7 @@ export default function Content() {
   return (
     <Form method="PUT" className="h-full ">
       <main className="content-page">
-        <input type="hidden" name="id" defaultValue={content.id} />
+        <input hidden name="id" defaultValue={content.id} />
         <input name="title" defaultValue={content.title} />
         <div className="my-2 border-b "></div>
         <textarea name="content" defaultValue={content.content} className="text" />
