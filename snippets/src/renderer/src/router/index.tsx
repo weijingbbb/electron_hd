@@ -9,6 +9,9 @@ import CategoryLoader from '@renderer/pages/category/loader'
 import ContentListLoader from '@renderer/pages/content-list/loader'
 import ContentLoader from '@renderer/pages/content/loader'
 
+
+import ContentAction from '@renderer/pages/content/action'
+
 const routers = createHashRouter([
   {
     path: '/',
@@ -32,6 +35,7 @@ const routers = createHashRouter([
               {
                 path: 'content/:id',
                 loader: ContentLoader,
+                action: ContentAction,
                 element: <Content />
               }
             ]

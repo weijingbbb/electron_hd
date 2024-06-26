@@ -3,23 +3,23 @@
   grid-template:
     "categories content" auto
     "nav content" 30px/140px auto;
-    gap: 4px;
-  @apply h-full bg-red-200;
+  gap: 1px;
+  @apply bg-slate-300;
   .categories {
-    @apply px-2 h-full text-xs bg-slate-300 text-slate-700 overflow-y-auto ;
+    @apply p-2 text-xs bg-slate-300 text-slate-700 overflow-y-scroll;
     grid-area: categories;
     .item {
       @apply flex items-center mb-1 py-1 px-2 w-full truncate cursor-pointer rounded-md;
       &:hover {
         @apply bg-blue-500  text-white;
         span {
-          @apply  text-white;
+          @apply text-white;
         }
       }
       &.active {
         @apply bg-blue-600 text-white;
         span {
-          @apply  text-white;
+          @apply text-white;
         }
       }
       span {
@@ -30,7 +30,6 @@
   .nav {
     grid-area: nav;
     @apply flex justify-around bg-gray-100;
-
   }
   .content {
     grid-area: content;
