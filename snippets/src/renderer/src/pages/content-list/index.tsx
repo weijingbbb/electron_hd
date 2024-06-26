@@ -19,7 +19,7 @@ export default function Content() {
   return (
     <main className="content-list-page">
       <div className="list">
-        <Form method="get">
+        <Form>
           <div className="flex items-center justify-between px-2 py-1 text-xs bg-white rounded ">
             <input
               type="text"
