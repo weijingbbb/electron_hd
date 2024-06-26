@@ -1,7 +1,7 @@
 .content-list-page {
   @apply h-screen bg-slate-200;
   display: grid;
-  grid-template: "list content" auto / 200px auto;
+  grid-template: "list content-box" auto / 200px auto;
   gap: 1px;
   .list {
     grid-area: list;
@@ -13,8 +13,8 @@
       @apply bg-blue-600 text-white;
     }
   }
-  .content {
-    grid-area: content;
+  .content-box {
+    grid-area: content-box;
     @apply h-full;
   }
 }

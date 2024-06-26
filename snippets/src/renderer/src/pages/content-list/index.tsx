@@ -34,7 +34,7 @@ export default function Content() {
           )
         })}
       </div>
-      <div className="content">
+      <div className="content-box">
         <Outlet />
       </div>
     </main>

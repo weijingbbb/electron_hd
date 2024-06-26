@@ -39,15 +39,15 @@ function initData() {
   }
 
   // 生成类目数据
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < 20; i++) {
     const name = Random.province()
     db.exec(`
         INSERT INTO categories (name, created_at) VALUES('${name}', datetime());
       `)
     // 生成列表数据
-    for (let index = 0; index < 10; index++) {
+    for (let index = 0; index < 20; index++) {
       const title = Random.city()
-      const content = Random.paragraph(50, 100)
+      const content = Random.paragraph(20, 50)
       db.exec(`
           INSERT INTO contents (title, content, category_id, created_at) VALUES('${title}', '${content}', ${i}, datetime());
         `)

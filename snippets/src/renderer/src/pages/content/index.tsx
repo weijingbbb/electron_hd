@@ -5,7 +5,7 @@ export default function Content() {
   const content = useLoaderData() as ContentType
   return (
     <Form method="PUT" className="h-full ">
-      <main className="content-page">
+      <main className="content-page" key={content.id}>
         <input hidden name="id" defaultValue={content.id} />
         <input name="title" defaultValue={content.title} />
         <div className="my-2 border-b "></div>
