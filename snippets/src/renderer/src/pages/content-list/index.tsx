@@ -1,11 +1,11 @@
 import dayjs from 'dayjs'
-import { useEffect } from 'react'
-import { NavLink, Outlet, useLoaderData, useNavigate } from 'react-router-dom'
+import { Form, NavLink, Outlet, useLoaderData, useNavigate, useSubmit } from 'react-router-dom'
 import './index.scss'
 
 export default function Content() {
   const contents = useLoaderData() as ContentType[]
   // const [content, setContent] = useState<ContentType>()
+  const submit = useSubmit()
 
   const navigate = useNavigate()
 
@@ -19,6 +19,20 @@ export default function Content() {
   return (
     <main className="content-list-page">
       <div className="list">
+        <Form method="get">
+          <div className="flex items-center justify-between px-2 py-1 text-xs bg-white rounded ">
+            <input
+              type="text"
+              name="keyword"
+              placeholder="关键词......"
+              className="w-full outline-none"
+              onChange={(e) => submit(e.target.form)}
+            />
+            {/* <Button htmlType="submit" type="default" size="small" className="text-xs ">
+              搜索
+            </Button> */}
+          </div>
+        </Form>
         {contents.map((item) => {
           const { id, title, category_id: cid, created_at } = item
           const to = `/config/category/content-list/${cid}/content/${id}`

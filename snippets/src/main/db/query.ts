@@ -1,8 +1,8 @@
 import { db } from './connect'
 
 // 查询所有数据
-export const findAll = (sql: string) => {
-  return db.prepare(sql).all()
+export const findAll = (sql: string, params: SqlParams = {}) => {
+  return db.prepare(sql).all(params)
 }
 // 查询单条
 export const findOne = (sql: string) => {

@@ -10,6 +10,7 @@ import CategoryLoader from '@renderer/pages/category/loader'
 import ContentListLoader from '@renderer/pages/content-list/loader'
 import ContentLoader from '@renderer/pages/content/loader'
 
+import ContentListAction from '@renderer/pages/content-list/action'
 import ContentAction from '@renderer/pages/content/action'
 
 const routers = createHashRouter([
@@ -32,10 +33,14 @@ const routers = createHashRouter([
           },
           {
             path: 'content-list/:cid?',
-
             loader: ContentListLoader,
+            action: ContentListAction,
             element: <ContentList />,
             children: [
+              {
+                index: true, // 这个意思代表如果没有路径匹配，则默认跳转到此页面
+                element: <WellCome />
+              },
               {
                 path: 'content/:id',
                 loader: ContentLoader,
