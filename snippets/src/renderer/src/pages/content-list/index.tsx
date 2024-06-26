@@ -1,3 +1,4 @@
+import { Add } from '@icon-park/react'
 import dayjs from 'dayjs'
 import { Form, NavLink, Outlet, useLoaderData, useNavigate, useSubmit } from 'react-router-dom'
 import './index.scss'
@@ -27,6 +28,15 @@ export default function Content() {
               placeholder="关键词......"
               className="w-full outline-none"
               onChange={(e) => submit(e.target.form)}
+            />
+            <Add
+              theme="outline"
+              size="18"
+              fill="#333"
+              className="cursor-pointer "
+              onClick={() => {
+                submit({ action: 'add' }, { method: 'POST' })
+              }}
             />
             {/* <Button htmlType="submit" type="default" size="small" className="text-xs ">
               搜索
