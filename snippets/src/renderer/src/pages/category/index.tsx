@@ -1,7 +1,7 @@
-import { FolderClose, FolderOpen } from '@icon-park/react'
+import { AllApplication, FolderClose, FolderOpen } from '@icon-park/react'
 import classnames from 'classnames'
 import { useState } from 'react'
-import { Link, Outlet, useLoaderData, useNavigate } from 'react-router-dom'
+import { Link, NavLink, Outlet, useLoaderData, useNavigate } from 'react-router-dom'
 import './index.scss'
 
 export default function Category() {
@@ -21,6 +21,15 @@ export default function Category() {
       <main className="category-page">
         <div className="categories">
           <section className="list-box">
+            <NavLink
+              to={`/config/category/content-list`}
+              end
+              className={classnames('item')}
+              // onClick={() => setCurrent(item)}
+            >
+              <AllApplication theme="outline" size="16" />
+              <span className="truncate ">所有</span>
+            </NavLink>
             {categories.map((item) => {
               const { id, name } = item
               return (
