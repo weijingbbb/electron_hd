@@ -1,6 +1,6 @@
 import { FolderClose, FolderOpen } from '@icon-park/react'
 import classnames from 'classnames'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { Link, Outlet, useLoaderData, useNavigate } from 'react-router-dom'
 import './index.scss'
 
@@ -10,12 +10,12 @@ export default function Category() {
 
   const navigate = useNavigate()
 
-  useEffect(() => {
-    if (categories.length) {
-      navigate(`/config/category/content-list/${categories[0].id}`)
-      setCurrent(categories[0])
-    }
-  }, [categories])
+  // useEffect(() => {
+  //   if (categories.length) {
+  //     navigate(`/config/category/content-list/${categories[0].id}`)
+  //     setCurrent(categories[0])
+  //   }
+  // }, [categories])
   return (
     <>
       <main className="category-page">

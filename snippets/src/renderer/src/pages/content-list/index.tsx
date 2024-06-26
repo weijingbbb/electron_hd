@@ -9,12 +9,12 @@ export default function Content() {
 
   const navigate = useNavigate()
 
-  useEffect(() => {
-    if (contents.length) {
-      // setContent(contents[0])
-      navigate(`/config/category/content-list/${contents[0].category_id}/content/${contents[0].id}`)
-    }
-  }, [contents])
+  // useEffect(() => {
+  //   if (contents.length) {
+  //     // setContent(contents[0])
+  //     navigate(`/config/category/content-list/${contents[0].category_id}/content/${contents[0].id}`)
+  //   }
+  // }, [contents])
 
   return (
     <main className="content-list-page">

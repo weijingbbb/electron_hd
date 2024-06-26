@@ -9,7 +9,8 @@
     @apply p-2 text-xs bg-slate-300 text-slate-700;
     grid-area: categories;
     .list-box {
-      @apply overflow-auto h-full;
+      @apply overflow-auto;
+      height: calc(100vh - 50px);
     }
     .item {
       @apply flex items-center mb-1 py-1 px-2 w-full truncate cursor-pointer rounded-md;
