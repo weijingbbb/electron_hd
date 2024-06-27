@@ -1,5 +1,6 @@
 import { Add } from '@icon-park/react'
 import dayjs from 'dayjs'
+import { useContextMenu } from 'mantine-contextmenu'
 import { Form, NavLink, Outlet, useLoaderData, useNavigate, useSubmit } from 'react-router-dom'
 import './index.scss'
 
@@ -7,6 +8,7 @@ export default function Content() {
   const contents = useLoaderData() as ContentType[]
   // const [content, setContent] = useState<ContentType>()
   const submit = useSubmit()
+  const { showContextMenu } = useContextMenu()
 
   const navigate = useNavigate()
 
@@ -52,6 +54,15 @@ export default function Content() {
               key={id}
               to={to}
               className={({ isActive }) => (isActive ? 'active item' : 'item')}
+              onContextMenu={showContextMenu([
+                {
+                  key: 'copy',
+                  title: '复制',
+                  onClick: () => {
+                    console.log('点击了复制')
+                  }
+                }
+              ])}
             >
               <span className="truncate">{title}</span>
               <span>{dayjs(created_at).format('YY/MM/DD')}</span>
