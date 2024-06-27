@@ -35,7 +35,14 @@ export default function Content() {
           })}
         </select>
         <div className="my-2 border-b "></div>
-        <textarea name="content" defaultValue={content.content} className="text" />
+        <textarea
+          name="content"
+          defaultValue={content.content}
+          className="text"
+          onChange={(e) => {
+            subbmit(e.target.form)
+          }}
+        />
         <div className="my-2 border-b "></div>
       </main>
     </Form>

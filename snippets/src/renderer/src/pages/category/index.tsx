@@ -1,7 +1,7 @@
-import { AllApplication, FolderClose, FolderOpen } from '@icon-park/react'
+import { AllApplication, FolderClose } from '@icon-park/react'
 import classnames from 'classnames'
 import { useState } from 'react'
-import { Link, NavLink, Outlet, useLoaderData, useNavigate } from 'react-router-dom'
+import { NavLink, Outlet, useLoaderData, useNavigate } from 'react-router-dom'
 import './index.scss'
 
 export default function Category() {
@@ -40,19 +40,29 @@ export default function Category() {
                 // >
                 //   {name}
                 // </NavLink>
-                <Link
-                  key={id}
+                <NavLink
                   to={`/config/category/content-list/${id}`}
-                  className={classnames('item', { active: current?.id === id })}
-                  onClick={() => setCurrent(item)}
+                  key={id}
+                  className={({ isActive }) => (isActive ? 'active item' : 'item')}
                 >
-                  {current?.id === id ? (
-                    <FolderOpen theme="outline" size="16" strokeWidth={4} />
-                  ) : (
-                    <FolderClose theme="outline" size="16" />
-                  )}
-                  <span className="truncate ">{name}</span>
-                </Link>
+                  <div className="flex items-center gap-1">
+                    <FolderClose theme="outline" size="12" strokeWidth={3} />
+                    <div className="truncate">{name}</div>
+                  </div>
+                </NavLink>
+                // <Link
+                //   key={id}
+                //   to={`/config/category/content-list/${id}`}
+                //   className={classnames('item', { active: current?.id === id })}
+                //   onClick={() => setCurrent(item)}
+                // >
+                //   {current?.id === id ? (
+                //     <FolderOpen theme="outline" size="16" strokeWidth={4} />
+                //   ) : (
+                //     <FolderClose theme="outline" size="16" />
+                //   )}
+                //   <span className="truncate ">{name}</span>
+                // </Link>
               )
             })}
           </section>

@@ -2,7 +2,6 @@ export default async ({ params, request }) => {
   const url = new URL(request.url)
 
   const keyword = url.searchParams.get('keyword')
-  console.log('keyword', keyword)
 
   const cid = params.cid
   let sql = `select * from contents`
