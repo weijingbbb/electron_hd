@@ -23,6 +23,7 @@ export default function Content() {
         <Form>
           <div className="flex items-center justify-between px-2 py-1 text-xs bg-white rounded ">
             <input
+              autoFocus
               type="text"
               name="keyword"
               placeholder="关键词......"
