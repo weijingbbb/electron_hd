@@ -2,7 +2,10 @@ import { Form, useLoaderData, useSubmit } from 'react-router-dom'
 import './index.scss'
 
 export default function Content() {
-  const content = useLoaderData() as ContentType
+  const { content, categories } = useLoaderData() as {
+    content: ContentType
+    categories: CategoryType[]
+  }
   const subbmit = useSubmit()
   return (
     <Form method="PUT" className="h-full ">
@@ -15,11 +18,25 @@ export default function Content() {
             subbmit(e.target.form)
           }}
         />
+        <select
+          name="category_id"
+          defaultValue={content.category_id}
+          onChange={(e) => {
+            subbmit(e.target.form)
+          }}
+        >
+          {categories.map((category) => {
+            const { id, name } = category
+            return (
+              <option value={id} key={id}>
+                {name}
+              </option>
+            )
+          })}
+        </select>
         <div className="my-2 border-b "></div>
         <textarea name="content" defaultValue={content.content} className="text" />
         <div className="my-2 border-b "></div>
-        {/* <Button type="primary">保存</Button> */}
-        {/* <button>保存</button> */}
       </main>
     </Form>
   )

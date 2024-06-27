@@ -4,17 +4,17 @@ export default async ({ request }) => {
   const id = params.get('id')
   const title = params.get('title')
   const content = params.get('content')
+  const category_id = params.get('category_id')
   const res = await window.api.sql(
-    `update contents set title = @title, content = @content where id = @id`,
+    `update contents set title = @title, content = @content, category_id = @category_id where id = @id`,
     'update',
     {
       id,
       title,
-      content
+      content,
+      category_id
     }
   )
-
-  console.log('-------------------', res)
 
   return res
 }

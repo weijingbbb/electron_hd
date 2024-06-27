@@ -21,7 +21,7 @@ export default function Content() {
     <main className="content-list-page">
       <div className="list">
         <Form>
-          <div className="flex items-center justify-between px-2 py-1 text-xs bg-white rounded ">
+          <div className="flex items-center justify-between px-2 py-1 mb-2 text-xs bg-white rounded ">
             <input
               autoFocus
               type="text"

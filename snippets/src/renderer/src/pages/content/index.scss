@@ -3,6 +3,9 @@
   input {
     @apply text-xl font-bold text-slate-600 opacity-95;
   }
+  select {
+    @apply mt-2 text-sm text-slate-500;
+  }
   textarea {
     @apply flex-1 text-sm text-slate-500 opacity-95 leading-relaxed;
   }
