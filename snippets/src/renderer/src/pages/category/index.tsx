@@ -21,14 +21,13 @@ export default function Category() {
       <main className="category-page">
         <div className="categories">
           <section className="list-box">
-            <NavLink
-              to={`/config/category/content-list`}
-              end
-              className={classnames('item')}
-              // onClick={() => setCurrent(item)}
-            >
+            <NavLink to={`/config/category/content-list`} end className={classnames('item')}>
               <AllApplication theme="outline" size="16" />
               <span className="truncate ">所有</span>
+            </NavLink>
+            <NavLink to={`/config/category/content-list/0`} end className={classnames('item')}>
+              <AllApplication theme="outline" size="16" />
+              <span className="truncate ">未分类</span>
             </NavLink>
             {categories.map((item) => {
               const { id, name } = item
