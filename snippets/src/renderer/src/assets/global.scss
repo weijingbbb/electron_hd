@@ -13,3 +13,18 @@ textarea,
 option {
   -webkit-app-region: no-drag;
 }
+
+.contextMenu {
+  @apply bg-[#2c3e50] p-1;
+  // button {
+  //   & > div {
+  //     @apply bg-[#2c3e50] text-white px-2 py-1 hover:bg-[#34495e];
+  //   }
+  // }
+  &-item {
+    @apply flex  items-center bg-[#2c3e50] text-white px-2 py-1 hover:bg-[#34495e];
+    .txt {
+      @apply ml-2;
+    }
+  }
+}

@@ -1,4 +1,5 @@
-import { Add } from '@icon-park/react'
+import { Add, DeleteFive } from '@icon-park/react'
+import '@renderer/assets/global.scss'
 import dayjs from 'dayjs'
 import { useContextMenu } from 'mantine-contextmenu'
 import { Form, NavLink, Outlet, useLoaderData, useNavigate, useSubmit } from 'react-router-dom'
@@ -38,7 +39,7 @@ export default function Content() {
               fill="#333"
               className="cursor-pointer "
               onClick={() => {
-                submit({ action: 'add' }, { method: 'POST' })
+                submit(null, { method: 'POST' })
               }}
             />
             {/* <Button htmlType="submit" type="default" size="small" className="text-xs ">
@@ -54,15 +55,25 @@ export default function Content() {
               key={id}
               to={to}
               className={({ isActive }) => (isActive ? 'active item' : 'item')}
-              onContextMenu={showContextMenu([
-                {
-                  key: 'copy',
-                  title: '复制',
-                  onClick: () => {
-                    console.log('点击了复制')
+              onContextMenu={showContextMenu(
+                [
+                  {
+                    key: 'del',
+                    title: (
+                      <div className="contextMenu-item">
+                        <DeleteFive theme="outline" size="16" />
+                        <span className="txt">删除此项</span>
+                      </div>
+                    ),
+                    onClick: () => {
+                      submit({ id }, { method: 'DELETE' })
+                    }
                   }
+                ],
+                {
+                  className: 'contextMenu'
                 }
-              ])}
+              )}
             >
               <span className="truncate">{title}</span>
               <span>{dayjs(created_at).format('YY/MM/DD')}</span>

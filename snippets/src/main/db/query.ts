@@ -17,6 +17,6 @@ export const update = (sql: string, params: SqlParams) => {
   return db.prepare(sql).run(params).changes
 }
 // 删除数据
-export const del = (sql: string) => {
-  return db.prepare(sql).run().changes
+export const del = (sql: string, params: SqlParams) => {
+  return db.prepare(sql).run(params).changes
 }
