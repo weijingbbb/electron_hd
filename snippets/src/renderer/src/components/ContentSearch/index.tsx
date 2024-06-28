@@ -5,7 +5,7 @@ export default function ContentSearch() {
   const submit = useSubmit()
   return (
     <Form>
-      <div className="flex items-center justify-between px-2 py-1 mb-2 text-xs bg-white rounded ">
+      <div className="flex items-center justify-between px-2 py-1 mb-3 text-xs bg-white border-b rounded shadow-md ">
         <input
           autoFocus
           type="text"

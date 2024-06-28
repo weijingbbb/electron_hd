@@ -1,17 +1,13 @@
 .content-list-page {
-  @apply h-screen bg-slate-200;
+  @apply h-screen bg-white text-xs;
   display: grid;
   grid-template: "list content-box" auto / 200px auto;
   gap: 1px;
-  .list {
-    grid-area: list;
-    @apply flex flex-col px-1 py-2 bg-slate-200 overflow-y-scroll;
-    .item {
-      @apply my-1 px-1 py-1 rounded text-xs flex justify-between;
-    }
-    .active {
-      @apply bg-blue-600 text-white;
-    }
+  .left-box {
+    @apply flex flex-col flex-shrink px-2 py-2 h-full  overflow-y-scroll ;
+  }
+  .list-box {
+    @apply flex-1 overflow-y-scroll;
   }
   .content-box {
     grid-area: content-box;

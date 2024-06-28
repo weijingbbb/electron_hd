@@ -2,12 +2,14 @@ import { DeleteFive } from '@icon-park/react'
 import dayjs from 'dayjs'
 import { useContextMenu } from 'mantine-contextmenu'
 import { NavLink, useSubmit } from 'react-router-dom'
+import styles from './index.module.scss'
 
 interface Props {
   content: ContentType
+  index?: number
 }
 
-export default function ContentListItem({ content }: Props) {
+export default function ContentListItem({ content, index }: Props) {
   const submit = useSubmit()
   const { showContextMenu } = useContextMenu()
   const { id, title, category_id: cid, created_at } = content
@@ -16,7 +18,9 @@ export default function ContentListItem({ content }: Props) {
     <NavLink
       key={id}
       to={to}
-      className={({ isActive }) => (isActive ? 'active item' : 'item')}
+      className={({ isActive }) => {
+        return [styles['link-box'], isActive ? styles.active : '', styles.link].join(' ')
+      }}
       onContextMenu={showContextMenu(
         [
           {
@@ -37,8 +41,9 @@ export default function ContentListItem({ content }: Props) {
         }
       )}
     >
-      <span className="truncate">{title}</span>
-      <span>{dayjs(created_at).format('YY/MM/DD')}</span>
+      {/* {index !== undefined ? <div className="truncate">{index + 1}</div> : null} */}
+      <div className="truncate">{title}</div>
+      <div className=" opacity-80">{dayjs(created_at).format('YY/MM/DD')}</div>
     </NavLink>
   )
 }

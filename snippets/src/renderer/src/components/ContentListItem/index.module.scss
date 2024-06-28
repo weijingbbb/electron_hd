@@ -1,0 +1,11 @@
+.link-box {
+  @apply flex justify-between items-center mb-1 w-full rounded hover:text-white;
+}
+
+.link {
+  @apply truncate py-[6px] px-1 cursor-pointer  gap-1 border-b border-slate-200 hover:bg-blue-500;
+}
+
+.active {
+  @apply bg-blue-600 text-white border-white hover:bg-blue-600;
+}

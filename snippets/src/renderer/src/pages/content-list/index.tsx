@@ -9,11 +9,13 @@ export default function Content() {
 
   return (
     <main className="content-list-page">
-      <div className="list">
+      <div className="left-box">
         <ContentSearch />
-        {contents.map((content) => (
-          <ContentListItem content={content} key={content.id} />
-        ))}
+        <section className="list-box">
+          {contents.map((content, index) => (
+            <ContentListItem content={content} key={content.id} index={index} />
+          ))}
+        </section>
       </div>
       <div className="content-box">
         <Outlet />
