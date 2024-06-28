@@ -2,7 +2,7 @@ import { DeleteFive, FolderClose, FolderOpen } from '@icon-park/react'
 import { useStore } from '@renderer/store/useStore'
 import { useContextMenu } from 'mantine-contextmenu'
 import { useMemo } from 'react'
-import { NavLink, useParams, useSubmit } from 'react-router-dom'
+import { NavLink, useParams, useSubmit, useFetcher } from 'react-router-dom'
 import styles from './index.module.scss'
 
 interface Props {
@@ -16,6 +16,7 @@ export const CategoryItem = ({ category }: Props) => {
   const { showContextMenu } = useContextMenu()
   const editCategoryId = useStore((state) => state.editCategoryId)
   const setEditCategoryId = useStore((state) => state.setEditCategoryId)
+  const fetcher = useFetcher()
 
   const linkStyls = (isActive: boolean) => {
     return isActive ? styles.active : styles.link
@@ -36,7 +37,7 @@ export const CategoryItem = ({ category }: Props) => {
         autoFocus
         onKeyDown={(e) => {
           if (e.key !== 'Enter') return
-          submit(
+          fetcher.submit(
             {
               id,
               name: e.currentTarget.value

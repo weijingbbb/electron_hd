@@ -31,7 +31,7 @@ export default async ({ request }) => {
         name,
         id
       })
-      return redirect(`/config/category/content-list/${id}`)
+      // return redirect(`/config/category/content-list/${id}`)
     }
   }
   return true
