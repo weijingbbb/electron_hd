@@ -1,4 +1,5 @@
 import { DeleteFive, FolderClose, FolderOpen } from '@icon-park/react'
+import { useStore } from '@renderer/store/useStore'
 import { useContextMenu } from 'mantine-contextmenu'
 import { useMemo } from 'react'
 import { NavLink, useParams, useSubmit } from 'react-router-dom'
@@ -13,6 +14,8 @@ export const CategoryItem = ({ category }: Props) => {
   const { cid = null } = useParams()
   const submit = useSubmit()
   const { showContextMenu } = useContextMenu()
+  const editCategoryId = useStore((state) => state.editCategoryId)
+  const setEditCategoryId = useStore((state) => state.setEditCategoryId)
 
   const linkStyls = (isActive: boolean) => {
     return isActive ? styles.active : styles.link
@@ -25,11 +28,33 @@ export const CategoryItem = ({ category }: Props) => {
     return <FolderClose theme="outline" size="16" />
   }, [id, cid])
 
-  return (
+  return editCategoryId === id ? (
+    <div className={styles.input}>
+      <input
+        defaultValue={name}
+        name="name"
+        autoFocus
+        onKeyDown={(e) => {
+          if (e.key !== 'Enter') return
+          submit(
+            {
+              id,
+              name: e.currentTarget.value
+            },
+            {
+              method: 'PUT'
+            }
+          )
+          setEditCategoryId(0)
+        }}
+      />
+    </div>
+  ) : (
     <NavLink
       to={`/config/category/content-list/${id}`}
       key={id}
       className={({ isActive }) => linkStyls(isActive)}
+      onDoubleClick={() => setEditCategoryId(id)}
       onContextMenu={showContextMenu(
         [
           {
