@@ -9,7 +9,7 @@ interface Props {
   index?: number
 }
 
-export default function ContentListItem({ content, index }: Props) {
+export default function ContentListItem({ content }: Props) {
   const submit = useSubmit()
   const { showContextMenu } = useContextMenu()
   const { id, title, category_id: cid, created_at } = content
