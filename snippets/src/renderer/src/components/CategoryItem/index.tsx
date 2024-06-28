@@ -1,8 +1,8 @@
-import { DeleteFive, FolderClose, FolderOpen } from '@icon-park/react'
+import { FolderClose, FolderOpen } from '@icon-park/react'
+import useCategory from '@renderer/hooks/useCategory'
 import { useStore } from '@renderer/store/useStore'
-import { useContextMenu } from 'mantine-contextmenu'
 import { useMemo } from 'react'
-import { NavLink, useParams, useSubmit, useFetcher } from 'react-router-dom'
+import { NavLink, useFetcher, useParams } from 'react-router-dom'
 import styles from './index.module.scss'
 
 interface Props {
@@ -12,11 +12,11 @@ interface Props {
 export const CategoryItem = ({ category }: Props) => {
   const { id, name } = category
   const { cid = null } = useParams()
-  const submit = useSubmit()
-  const { showContextMenu } = useContextMenu()
   const editCategoryId = useStore((state) => state.editCategoryId)
   const setEditCategoryId = useStore((state) => state.setEditCategoryId)
   const fetcher = useFetcher()
+
+  const { contextMenu } = useCategory(category)
 
   const linkStyls = (isActive: boolean) => {
     return isActive ? styles.active : styles.link
@@ -56,25 +56,10 @@ export const CategoryItem = ({ category }: Props) => {
       key={id}
       className={({ isActive }) => linkStyls(isActive)}
       onDoubleClick={() => setEditCategoryId(id)}
-      onContextMenu={showContextMenu(
-        [
-          {
-            key: 'del',
-            title: (
-              <div className="contextMenu-item">
-                <DeleteFive theme="outline" size="16" />
-                <span className="txt">删除栏目</span>
-              </div>
-            ),
-            onClick: () => {
-              submit({ id }, { method: 'DELETE' })
-            }
-          }
-        ],
-        {
-          className: 'contextMenu'
-        }
-      )}
+      onContextMenu={contextMenu()}
+      onDragOver={() => {
+        console.log('onDragOver')
+      }}
     >
       <div className="flex items-center gap-1">
         {icon}
