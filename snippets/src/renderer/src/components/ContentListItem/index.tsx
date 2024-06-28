@@ -40,6 +40,9 @@ export default function ContentListItem({ content }: Props) {
           className: 'contextMenu'
         }
       )}
+      onDragStart={(e) => {
+        e.dataTransfer.setData('id', String(content.id))
+      }}
     >
       {/* {index !== undefined ? <div className="truncate">{index + 1}</div> : null} */}
       <div className="truncate">{title}</div>

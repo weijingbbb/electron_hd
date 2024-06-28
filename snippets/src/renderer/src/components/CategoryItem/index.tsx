@@ -16,7 +16,7 @@ export const CategoryItem = ({ category }: Props) => {
   const setEditCategoryId = useStore((state) => state.setEditCategoryId)
   const fetcher = useFetcher()
 
-  const { contextMenu } = useCategory(category)
+  const { contextMenu, dragEvent } = useCategory(category)
 
   const linkStyls = (isActive: boolean) => {
     return isActive ? styles.active : styles.link
@@ -57,9 +57,7 @@ export const CategoryItem = ({ category }: Props) => {
       className={({ isActive }) => linkStyls(isActive)}
       onDoubleClick={() => setEditCategoryId(id)}
       onContextMenu={contextMenu()}
-      onDragOver={() => {
-        console.log('onDragOver')
-      }}
+      {...dragEvent}
     >
       <div className="flex items-center gap-1">
         {icon}
