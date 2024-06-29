@@ -6,7 +6,7 @@ export default function Search() {
   const { search, handleSearch } = useSearch()
 
   const handleOpenConfigWindow = () => {
-    window.api.openConfigWindow()
+    window.api.openWindow('config')
   }
 
   return (

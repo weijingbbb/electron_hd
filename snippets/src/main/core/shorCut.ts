@@ -1,10 +1,4 @@
-import {
-  BrowserWindow,
-  IpcMainInvokeEvent,
-  app,
-  globalShortcut,
-  ipcMain
-} from 'electron'
+import { BrowserWindow, IpcMainInvokeEvent, app, globalShortcut, ipcMain } from 'electron'
 
 type HotKeyType = 'renderWindow' | 'search'
 interface HotKeyProps {

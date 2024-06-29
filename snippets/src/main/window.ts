@@ -1,7 +1,5 @@
-import { BrowserWindow } from 'electron'
+import { BrowserWindow, app } from 'electron'
 import { OptionsType, createWindow } from './createWindow'
-
-export type WindowNameType = 'search' | 'config' | 'setting'
 
 export type ConfigType = Record<
   WindowNameType,
@@ -15,28 +13,42 @@ export const WindowConfig: ConfigType = {
   search: {
     id: 0,
     options: {
-      openDevTools: false
+      initShow: true,
+      openDevTools: true,
+      hash: ''
     }
   },
   config: {
-    id: 1,
+    id: 0,
     options: {
-      openDevTools: false
+      width: 1060,
+      height: 600,
+      frame: true,
+      transparent: false,
+      openDevTools: true,
+      hash: '/#config/category/content-list'
     }
   },
   setting: {
-    id: 2,
+    id: 0,
     options: {
       openDevTools: false
     }
   }
 }
 
+// 通过id查找窗口，懒汉模式，如果没有则创建，有则返回
 export function getWindow(name: WindowNameType): BrowserWindow {
   let win = BrowserWindow.fromId(WindowConfig[name].id)
   if (!win) {
     win = createWindow(WindowConfig[name].options)
     WindowConfig[name].id = win.id
   }
+  console.log(name, win.id, WindowConfig[name].id)
   return win
 }
+
+app.whenReady().then(() => {
+  getWindow('search')
+  getWindow('config')
+})

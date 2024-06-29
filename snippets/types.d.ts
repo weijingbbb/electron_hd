@@ -1,5 +1,7 @@
 type SqlActionType = 'findAll' | 'findOne' | 'insert' | 'update' | 'del'
 
+type WindowNameType = 'search' | 'config' | 'setting'
+
 type CategoryType = {
   id: number
   name: string

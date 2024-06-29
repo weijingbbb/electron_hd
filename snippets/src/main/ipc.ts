@@ -1,6 +1,6 @@
-import { IpcMainEvent, ipcMain } from 'electron'
+import { IpcMainEvent, ipcMain } from 'electron';
 
-import { WindowNameType, getWindow } from './windowConfig'
+import { getWindow } from './window';
 
 ipcMain.on('openWindow', (_event: IpcMainEvent, name: WindowNameType) => {
   getWindow(name).show()
