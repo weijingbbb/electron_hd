@@ -34,7 +34,7 @@ export function createConfigWindow() {
   // HMR for renderer base on electron-vite cli.
   // Load the remote URL for development or the local html file for production.
   if (is.dev && process.env['ELECTRON_RENDERER_URL']) {
-    configWindow.loadURL(process.env['ELECTRON_RENDERER_URL'] + '/#config/category/content-list')
+    configWindow.loadURL(process.env['ELECTRON_RENDERER_URL'] + '/#config')
   } else {
     configWindow.loadURL(
       url.format({
@@ -44,7 +44,7 @@ export function createConfigWindow() {
         protocol: 'file',
         slashes: true,
         // hash的值
-        hash: 'config/category/content-list'
+        hash: 'config'
       })
     )
   }
