@@ -4,8 +4,8 @@ import { is } from '@electron-toolkit/utils'
 import { join } from 'path'
 import icon from '../../../resources/icon.png?asset'
 
-interface OptionsType extends Partial<BrowserWindowConstructorOptions> {
-  hash: string
+export interface OptionsType extends Partial<BrowserWindowConstructorOptions> {
+  hash?: string
   openDevTools?: boolean
 }
 
