@@ -5,6 +5,7 @@ import { BrowserWindow, app, ipcMain } from 'electron'
 import { createWindow } from './createWindow'
 import './db'
 import './ipc'
+import './shorCut'
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.

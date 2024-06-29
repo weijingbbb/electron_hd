@@ -1,11 +1,18 @@
-import { IpcMainEvent, ipcMain } from 'electron';
+import { IpcMainEvent, ipcMain } from 'electron'
 
-import { getWindow } from './window';
+import { getWindowByEvent, getWindowByName } from './window'
 
 ipcMain.on('openWindow', (_event: IpcMainEvent, name: WindowNameType) => {
-  getWindow(name).show()
+  getWindowByName(name).show()
 })
 
 ipcMain.on('closeWindow', (_event: IpcMainEvent, name: WindowNameType) => {
-  getWindow(name).hide()
+  getWindowByName(name).hide()
 })
+
+ipcMain.on(
+  'setIgnoreMouseEvents',
+  (event: IpcMainEvent, ignore: boolean, options?: { forward: boolean }) => {
+    getWindowByEvent(event).setIgnoreMouseEvents(ignore, options)
+  }
+)

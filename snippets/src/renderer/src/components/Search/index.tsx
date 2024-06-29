@@ -16,7 +16,7 @@ export default function Search() {
           className="w-full p-1 mr-2 rounded-md outline-none text-ml text-slate-600 "
           value={search}
           onChange={handleSearch}
-          // autoFocus
+          autoFocus
         />
         <SettingTwo
           theme="outline"

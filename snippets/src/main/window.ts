@@ -1,4 +1,4 @@
-import { BrowserWindow, app } from 'electron'
+import { BrowserWindow, IpcMainEvent, IpcMainInvokeEvent, app } from 'electron'
 import { OptionsType, createWindow } from './createWindow'
 
 export type ConfigType = Record<
@@ -38,7 +38,7 @@ export const WindowConfig: ConfigType = {
 }
 
 // 通过id查找窗口，懒汉模式，如果没有则创建，有则返回
-export function getWindow(name: WindowNameType): BrowserWindow {
+export function getWindowByName(name: WindowNameType): BrowserWindow {
   let win = BrowserWindow.fromId(WindowConfig[name].id)
   if (!win) {
     win = createWindow(WindowConfig[name].options)
@@ -48,7 +48,11 @@ export function getWindow(name: WindowNameType): BrowserWindow {
   return win
 }
 
+export const getWindowByEvent = (event: IpcMainEvent | IpcMainInvokeEvent) => {
+  return BrowserWindow.fromWebContents(event.sender)!
+}
+
 app.whenReady().then(() => {
-  getWindow('search')
-  getWindow('config')
+  getWindowByName('search')
+  getWindowByName('config')
 })
