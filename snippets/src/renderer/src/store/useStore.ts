@@ -1,6 +1,6 @@
 import { DataType } from '@renderer/data'
 import { create } from 'zustand'
-import { persist, createJSONStorage } from 'zustand/middleware'
+import { createJSONStorage, persist } from 'zustand/middleware'
 
 interface StateProps {
   data: DataType[]
@@ -13,6 +13,9 @@ interface StateProps {
   setId: (id: number) => void
   editCategoryId: number
   setEditCategoryId: (id: number) => void
+  // 快捷键
+  shortcutShow: string[]
+  setShortcutShow: (key: string[]) => void
 }
 
 export const useStore = create(
@@ -28,12 +31,14 @@ export const useStore = create(
         id: 0,
         setId: (id) => set({ id }),
         editCategoryId: 0,
-        setEditCategoryId: (editCategoryId) => set({ editCategoryId })
+        setEditCategoryId: (editCategoryId) => set({ editCategoryId }),
+        shortcutShow: [],
+        setShortcutShow: (shortcutShow) => set({ shortcutShow })
       }
     },
     {
       name: 'wj-hotepad',
-      storage: createJSONStorage(() => sessionStorage)
+      storage: createJSONStorage(() => localStorage)
     }
   )
 )

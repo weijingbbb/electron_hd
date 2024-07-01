@@ -1,31 +1,34 @@
 import { BrowserWindow, IpcMainInvokeEvent, app, globalShortcut, ipcMain } from 'electron'
 import { getWindowByName } from './window'
 
-interface HotKeyProps {
-  type: HotKeyType
-  shortCur: string
-}
 const HotKeyDictionary: {
   [key in HotKeyType]?: string
 } = {}
 
 // 注册热键
-ipcMain.handle('shortCur', (event: IpcMainInvokeEvent, { type, shortCur }: HotKeyProps) => {
+ipcMain.handle('shortCur', (_event: IpcMainInvokeEvent, { type, shortCur }: HotKeyProps) => {
+  console.log('shortCur', shortCur)
   // 如果注册了,则不再进行注册
-  if (HotKeyDictionary[type] === shortCur) return
-  HotKeyDictionary[type] = shortCur
+  // if (HotKeyDictionary[type] === shortCur) return
+  // if (HotKeyDictionary[type]) {
+  //   globalShortcut.unregister(HotKeyDictionary[type]!)
+  // }
+
+  // 注销旧的快捷键，
+  // HotKeyDictionary[type] = shortCur
+  globalShortcut.unregisterAll()
   const win = getWindowByName('search')
 
   switch (type) {
-    case 'renderWindow':
-      return renderWindow(win, shortCur)
+    case 'RenderSearch':
+      return renderSearch(win, shortCur)
     default:
       break
   }
 })
 
 // 注册切换窗口快捷键
-function renderWindow(win: BrowserWindow, shortCur: string) {
+function renderSearch(win: BrowserWindow, shortCur: string) {
   return globalShortcut.register(shortCur, () => {
     win?.isVisible() ? win.hide() : win?.show()
   })

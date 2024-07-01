@@ -3,7 +3,12 @@ type SqlActionType = 'findAll' | 'findOne' | 'insert' | 'update' | 'del'
 // 窗口的类型
 type WindowNameType = 'search' | 'config' | 'setting'
 // 注册的热键类型
-type HotKeyType = 'renderWindow' | 'search'
+type HotKeyType = 'RenderSearch'
+// 注册的热键类型 - 通信参数
+interface HotKeyProps {
+  type: HotKeyType
+  shortCur: string
+}
 
 type CategoryType = {
   id: number

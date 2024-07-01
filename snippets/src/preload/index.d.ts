@@ -5,7 +5,7 @@ declare global {
     electron: ElectronAPI
     api: {
       hideWindow: () => void
-      shortCur: (params: any) => Promise<boolean>
+      shortCur: (params: HotKeyProps) => Promise<boolean>
       setIgnoreMouseEvents: (ignore: boolean, options?: { forward: boolean }) => void
       openConfigWindow: () => void
       sql: <T>(sql: string, type: SqlActionType, params?: SqlParams) => Promise<T>

@@ -14,7 +14,7 @@ export const WindowConfig: ConfigType = {
     id: 0,
     options: {
       initShow: true,
-      openDevTools: true,
+      openDevTools: false,
       hash: ''
     }
   },
@@ -25,14 +25,20 @@ export const WindowConfig: ConfigType = {
       height: 600,
       frame: true,
       transparent: false,
-      openDevTools: true,
+      openDevTools: false,
       hash: '/#config/category/content-list'
     }
   },
   setting: {
     id: 0,
     options: {
-      openDevTools: false
+      initShow: true,
+      width: 700,
+      height: 400,
+      frame: true,
+      transparent: false,
+      openDevTools: true,
+      hash: '/#config'
     }
   }
 }
@@ -55,4 +61,5 @@ export const getWindowByEvent = (event: IpcMainEvent | IpcMainInvokeEvent) => {
 app.whenReady().then(() => {
   getWindowByName('search')
   getWindowByName('config')
+  getWindowByName('setting')
 })
