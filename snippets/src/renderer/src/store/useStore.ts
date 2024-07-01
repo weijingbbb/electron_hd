@@ -38,7 +38,7 @@ export const useStore = create(
         shortcutShow: [],
         setShortcutShow: (shortcutShow) => set({ shortcutShow }),
         databasePath: '',
-        setDatabasePath: (databasePath) => set({ databasePath })
+        setDatabasePath: (databasePath) => set({ databasePath }),
       }
     },
     {

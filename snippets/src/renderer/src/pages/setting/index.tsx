@@ -15,7 +15,18 @@ export default function Setting() {
   const inputRef = useRef(null)
   const databasePath = useStore((s) => s.databasePath)
   const setDatabasePath = useStore((s) => s.setDatabasePath)
-  const [modal, contextHolder] = Modal.useModal();
+  const [modal, contextHolder] = Modal.useModal()
+
+  const closeWin = (event) => {
+    if (!databasePath) {
+      modal.warning({
+        title: '提醒',
+        content: '请设置数据库存储路径，再关闭窗口'
+      })
+      // 阻止窗口关闭
+      event.preventDefault()
+    }
+  }
 
   // 页面初次渲染时，读取store里的值
   // 如果有快捷键的值，则显示在input框中
@@ -26,6 +37,12 @@ export default function Setting() {
       setKeys(shortcutShow)
     }
   }, [])
+  useEffect(() => {
+    window.addEventListener('beforeunload', closeWin)
+    return () => {
+      window.removeEventListener('beforeunload', closeWin)
+    }
+  }, [databasePath])
 
   const handleChangeShortcutKey = async (e: KeyboardEvent<HTMLInputElement>) => {
     const input = e.currentTarget
@@ -72,7 +89,7 @@ export default function Setting() {
         title: '提醒',
         content: '选择目录后，将进行数据初始化。',
         okText: '确认',
-        cancelText: '取消',
+        cancelText: '取消'
       })
       console.log(confirm_result)
       if (!confirm_result) return
@@ -92,7 +109,7 @@ export default function Setting() {
       <section>
         <div className="title">
           <h3>快捷键定义</h3>
-          <div className="tips">快速隐藏显示搜索栏,最多输入三个组合键</div>
+          <div className="tips">快速隐藏显示搜索栏,请设置两个组合键</div>
         </div>
         <input
           className="shortcut-input"
@@ -109,7 +126,7 @@ export default function Setting() {
           onKeyDown={handleChangeShortcutKey}
         /> */}
         <div className="title">
-          <h3>数据库存放路径</h3>
+          <h3>数据库存储路径</h3>
           <div className="tips"></div>
         </div>
         <Input

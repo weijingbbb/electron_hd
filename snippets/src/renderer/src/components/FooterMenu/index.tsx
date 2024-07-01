@@ -7,7 +7,7 @@ export default function FooterMenu() {
     submit(null, { method: 'POST' })
   }
   return (
-    <div className="nav">
+    <div className="h-0 overflow-hidden nav">
       <Add theme="outline" size="24" fill="#333" onClick={add}/>
     </div>
   )

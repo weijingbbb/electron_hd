@@ -7,6 +7,7 @@ export default () => {
   const setData = useStore((state) => state.setData)
   const id = useStore((state) => state.id)
   const setId = useStore((state) => state.setId)
+  const setSearch = useStore((state) => state.setSearch)
   // 回车敲的项
   const [highlightedIndex, setHighlightedIndex] = useState<number | null>(null)
   const index = useMemo(() => {
@@ -19,7 +20,7 @@ export default () => {
     setHighlightedIndex(index)
     const content = data.find((item) => item.id == id)?.content
     await navigator.clipboard.writeText(content!)
-    window.api.hideWindow()
+    window.api.closeWindow('search')
     clear()
   }, [index, id])
   const handleMouseEnter = useCallback((selectItem: DataType) => {
@@ -30,6 +31,7 @@ export default () => {
   const clear = () => {
     setData([])
     setId(0)
+    setSearch('')
     setHighlightedIndex(null)
   }
 

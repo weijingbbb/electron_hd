@@ -1,21 +1,19 @@
-import { AllApplication, BlocksAndArrows } from '@icon-park/react'
-import { NavLink } from 'react-router-dom'
+import { Add, AllApplication, BlocksAndArrows } from '@icon-park/react'
+import { NavLink, useSubmit } from 'react-router-dom'
 import styles from './index.module.scss'
 
 export default function QuickNav() {
+  const submit = useSubmit()
+  const add = () => {
+    submit(null, { method: 'POST' })
+  }
   return (
     <>
-      {/* <div className="px-2 mt-2 mb-1 opacity-90">快捷操作</div>
-      <NavLink to={`/config/category/content-list`} end className={classnames('item')}>
-        <AllApplication theme="outline" size="16" />
-        <span className="truncate ">所有</span>
-      </NavLink>
-      <NavLink to={`/config/category/content-list/0`} end className={classnames('item')}>
-        <BlocksAndArrows theme="outline" size="16" />
-        <span className="truncate ">未分类</span>
-      </NavLink> */}
       <main className="mb-3 border-b">
-        <div className="px-2 mt-2 mb-2 text-xs opacity-90">快捷操作</div>
+        <div className="flex items-center justify-between px-2 mt-2 mb-2 text-xs opacity-90">
+          <span>快捷操作</span>
+          <Add theme="outline" size="18" fill="#333" onClick={add} />
+        </div>
         <NavLink
           to={`/config/category/content-list`}
           end

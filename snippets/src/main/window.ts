@@ -14,7 +14,7 @@ export const WindowConfig: ConfigType = {
     id: 0,
     options: {
       initShow: true,
-      openDevTools: false,
+      openDevTools: true,
       hash: ''
     }
   },
@@ -37,7 +37,7 @@ export const WindowConfig: ConfigType = {
       height: 400,
       frame: true,
       transparent: false,
-      openDevTools: true,
+      openDevTools: false,
       hash: '/#config'
     }
   }

@@ -2,13 +2,12 @@ import ErrorMessage from '@renderer/components/Error'
 import Result from '@renderer/components/Result'
 import Search from '@renderer/components/Search'
 import useIgnoreMouseEvents from '@renderer/hooks/useIgnoreMouseEvents'
-import useShortCur from '@renderer/hooks/useShortCur'
 import { useStore } from '@renderer/store/useStore'
 import { MutableRefObject, useEffect, useRef } from 'react'
+import style from './index.module.scss'
 
 function Home(): JSX.Element {
   const mainRef = useRef<HTMLDivElement | null>(null)
-  const { registerRenderWindowShortCut } = useShortCur()
   const { setIgnoreMouseEvents } = useIgnoreMouseEvents()
   const shortcutShow = useStore((s) => s.shortcutShow)
   const databasePath = useStore((s) => s.databasePath)
@@ -22,18 +21,20 @@ function Home(): JSX.Element {
     setIgnoreMouseEvents(mainRef as MutableRefObject<HTMLDivElement>)
     // window.api.openConfigWindow()
     // 注册快捷键
-    console.log('shortcutShow:', shortcutShow)
     if (shortcutShow.length) {
       window.api.shortCur({
         type: 'RenderSearch',
         shortCur: shortcutShow.join('+')
       })
     }
+    if (!databasePath) {
+      window.api.openWindow('setting')
+    }
 
   }, [])
   return (
     <>
-      <main className="relative " ref={mainRef}>
+      <main className={style['search-module']} ref={mainRef}>
         <Search />
         <Result />
         <ErrorMessage />

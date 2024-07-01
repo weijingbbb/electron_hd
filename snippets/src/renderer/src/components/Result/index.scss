@@ -1,8 +1,8 @@
 .result-main {
-  @apply py-3 bg-slate-50 px-3 rounded-bl-lg rounded-br-lg -mt-[10px];
+  @apply max-h-[500px] bg-slate-50 px-3 rounded-bl-lg rounded-br-lg -mt-[10px] overflow-y-scroll;
 }
 .result-item {
-  @apply relative p-1 mb-2 text-sm truncate rounded-sm text-slate-700 bg-slate-200 cursor-pointer;
+  @apply relative p-1 mt-1 mb-2 text-sm truncate rounded-sm text-slate-700 bg-slate-200 cursor-pointer;
   &.active {
     @apply bg-orange-300 text-white
   }
