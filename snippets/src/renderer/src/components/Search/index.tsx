@@ -1,12 +1,12 @@
-import { SettingTwo } from '@icon-park/react'
+import { Editor, SettingTwo } from '@icon-park/react'
 import useSearch from '@renderer/hooks/useSearch'
 import { Input } from 'antd'
 
 export default function Search() {
   const { search, handleSearch } = useSearch()
 
-  const handleOpenConfigWindow = () => {
-    window.api.openWindow('config')
+  const handleOpenConfigWindow = (win: WindowNameType) => {
+    window.api.openWindow(win)
   }
 
   return (
@@ -18,12 +18,19 @@ export default function Search() {
           onChange={handleSearch}
           autoFocus
         />
+        <Editor
+          theme="outline"
+          size="20"
+          fill="#666"
+          className="mr-2 cursor-pointer"
+          onClick={() => handleOpenConfigWindow('config')}
+        />
         <SettingTwo
           theme="outline"
           size="20"
           fill="#666"
           className="cursor-pointer "
-          onClick={handleOpenConfigWindow}
+          onClick={() => handleOpenConfigWindow('setting')}
         />
       </section>
       <section className="mt-2 text-sm text-center text-slate-600">多吃核桃能补脑！</section>

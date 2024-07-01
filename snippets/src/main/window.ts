@@ -32,7 +32,7 @@ export const WindowConfig: ConfigType = {
   setting: {
     id: 0,
     options: {
-      initShow: true,
+      initShow: false,
       width: 700,
       height: 400,
       frame: true,

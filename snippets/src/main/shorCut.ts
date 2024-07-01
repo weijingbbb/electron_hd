@@ -17,6 +17,10 @@ ipcMain.handle('shortCur', (_event: IpcMainInvokeEvent, { type, shortCur }: HotK
   // 注销旧的快捷键，
   // HotKeyDictionary[type] = shortCur
   globalShortcut.unregisterAll()
+  if (shortCur && globalShortcut.isRegistered(shortCur)) {
+    // dialog.showErrorBox('温馨提示','快捷键注册失败，请检查快捷键是否已被占用。')
+    return false
+  }
   const win = getWindowByName('search')
 
   switch (type) {

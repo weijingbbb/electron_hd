@@ -11,6 +11,10 @@ function Home(): JSX.Element {
   const { registerRenderWindowShortCut } = useShortCur()
   const { setIgnoreMouseEvents } = useIgnoreMouseEvents()
   const shortcutShow = useStore((s) => s.shortcutShow)
+  const databasePath = useStore((s) => s.databasePath)
+
+  window.api.setDatabaseDirectory(databasePath)
+  window.api.initTable()
 
   useEffect(() => {
     // 注册窗口切换快捷键
@@ -25,6 +29,7 @@ function Home(): JSX.Element {
         shortCur: shortcutShow.join('+')
       })
     }
+
   }, [])
   return (
     <>
