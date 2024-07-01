@@ -30,7 +30,6 @@ function Home(): JSX.Element {
     if (!databasePath) {
       window.api.openWindow('setting')
     }
-
   }, [])
   return (
     <>

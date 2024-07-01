@@ -36,6 +36,8 @@ export function createWindow(options: OptionsType = {}) {
     )
   )
 
+
+
   win.on('ready-to-show', () => {
     options.initShow && win.show()
   })

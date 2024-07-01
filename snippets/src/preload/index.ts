@@ -37,6 +37,14 @@ const api = {
   },
   initTable: () => {
     ipcRenderer.send('initTable')
+  },
+
+  toRenderOpenWindow: (callback) => {
+    console.log('preoload:----toRenderOpenWindow')
+    ipcRenderer.on('toRenderOpenWindow', (_, name) => {
+      // callback(name)
+      ipcRenderer.send('openWindow', name)
+    })
   }
 }
 

@@ -7,7 +7,6 @@ const HotKeyDictionary: {
 
 // 注册热键
 ipcMain.handle('shortCur', (_event: IpcMainInvokeEvent, { type, shortCur }: HotKeyProps) => {
-  console.log('shortCur', shortCur)
   // 如果注册了,则不再进行注册
   // if (HotKeyDictionary[type] === shortCur) return
   // if (HotKeyDictionary[type]) {

@@ -1,6 +1,9 @@
 import { BrowserWindow, IpcMainEvent, IpcMainInvokeEvent, app } from 'electron'
 import { OptionsType, createWindow } from './createWindow'
 
+import { createMenu } from './menu'
+import { createTray } from './tray'
+
 export type ConfigType = Record<
   WindowNameType,
   {
@@ -50,7 +53,6 @@ export function getWindowByName(name: WindowNameType): BrowserWindow {
     win = createWindow(WindowConfig[name].options)
     WindowConfig[name].id = win.id
   }
-  console.log(name, win.id, WindowConfig[name].id)
   return win
 }
 
@@ -62,4 +64,9 @@ app.whenReady().then(() => {
   getWindowByName('search')
   getWindowByName('config')
   getWindowByName('setting')
+
+   // 创建系统托盘
+   createTray()
+   // 创建菜单
+   createMenu()
 })

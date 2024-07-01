@@ -14,6 +14,9 @@ declare global {
       selectDirectory: () => Promise<string>
       setDatabaseDirectory: (path: string) => void
       initTable: () => void
+
+      // 主进程向渲染进程发送事件
+      toRenderOpenWindow: (callback: (name: WindowNameType) => void) => void
     }
   }
 }
