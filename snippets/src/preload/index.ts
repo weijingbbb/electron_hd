@@ -27,6 +27,16 @@ const api = {
   },
   closeWindow: (name: WindowNameType) => {
     ipcRenderer.send('closeWindow', name)
+  },
+  // 选择数据库存放目录
+  selectDirectory: () => {
+    return ipcRenderer.invoke('selectDirectory')
+  },
+  setDatabaseDirectory: (path: string) => {
+    ipcRenderer.send('setDatabaseDirectory', path)
+  },
+  initTable: () => {
+    ipcRenderer.send('initTable')
   }
 }
 

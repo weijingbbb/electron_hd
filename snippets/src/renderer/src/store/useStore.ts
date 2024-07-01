@@ -16,6 +16,9 @@ interface StateProps {
   // 快捷键
   shortcutShow: string[]
   setShortcutShow: (key: string[]) => void
+  // 数据库存放路径
+  databasePath: string
+  setDatabasePath: (val: string) => void
 }
 
 export const useStore = create(
@@ -33,7 +36,9 @@ export const useStore = create(
         editCategoryId: 0,
         setEditCategoryId: (editCategoryId) => set({ editCategoryId }),
         shortcutShow: [],
-        setShortcutShow: (shortcutShow) => set({ shortcutShow })
+        setShortcutShow: (shortcutShow) => set({ shortcutShow }),
+        databasePath: '',
+        setDatabasePath: (databasePath) => set({ databasePath })
       }
     },
     {

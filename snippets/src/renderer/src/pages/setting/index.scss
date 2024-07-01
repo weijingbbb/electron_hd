@@ -19,6 +19,12 @@
     }
   }
   .shortcut-input {
-    @apply focus:border-orange-300;
+    @apply py-1 px-3 focus:border-orange-300 rounded;
+  }
+  .path-btn {
+    @apply flex items-center;
+    span {
+      @apply ml-1;
+    }
   }
 }

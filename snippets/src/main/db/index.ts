@@ -1,3 +1,2 @@
-import './ipc';
-import './tables';
-
+import './ipc'
+import './tables'
