@@ -9,8 +9,8 @@ import { RouterProvider } from 'react-router-dom'
 import routers from './router'
 
 window.addEventListener('DOMContentLoaded', () => {
-  window.api.toRenderOpenWindow((name: WindowNameType) => {
-    // console.log('toRenderOpenWindow事件：得到主进程菜单传递过来的参数-' + name)
+  window.api.toRenderOpenWindow((_name: WindowNameType) => {
+    console.log('toRenderOpenWindow事件：得到主进程菜单传递过来的参数-' + _name)
     // window.api.openWindow(name)
   })
 })

@@ -62,11 +62,11 @@ export const getWindowByEvent = (event: IpcMainEvent | IpcMainInvokeEvent) => {
 
 app.whenReady().then(() => {
   getWindowByName('search')
-  getWindowByName('config')
-  getWindowByName('setting')
+  // getWindowByName('config')
+  // getWindowByName('setting')
 
-   // 创建系统托盘
-   createTray()
-   // 创建菜单
-   createMenu()
+  // 创建系统托盘
+  createTray()
+  // 创建菜单
+  createMenu()
 })
